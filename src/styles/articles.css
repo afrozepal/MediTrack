@@ -1,0 +1,120 @@
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffff;
+    padding: 10px;
+    width: 800px;
+}
+
+.search-input {
+    width: 300px;
+    margin-right: 10px;
+}
+
+.form-control{
+    width: 500px;
+    background-color: #bab2efdc;
+}
+.btndesign{
+    background-color: #bab2efdc;
+    border-color: #bab2efdc;
+}
+.btndesign:hover{
+    background-color: #2F3059;
+}
+
+.Articles-heading{
+    font-weight: bold;
+    color:#2F3059;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.dropdown{
+    margin-left: 940px;
+    margin-top: -45px;
+}
+/* Body of Article */
+.image-container{
+    background: url("../assets/orange.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 350px;
+    border-radius: 30px; 
+}
+
+.article{
+    font-weight: bold;
+    color:#2F3059; 
+    font-size: 40px;
+    margin-top: 180px;
+}
+.article-body{
+    color:#2F3059; 
+    font-size: 18px;
+    align-items: center;
+}
+.article-subheadings{
+    color:#2F3059; 
+    font-size: 18px;
+    font-weight: bold;
+    align-items: center;
+}
+
+
+/* Article 2 */
+.image-container2{
+    background: url("../assets/med.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 350px;
+    border-radius: 30px; 
+}
+/* Article 3 */
+.image-container2{
+    background: url("../assets/3.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 350px;
+    border-radius: 30px; 
+}
+/* Article 4 */
+.image-container2{
+    background: url("../assets/4.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 350px;
+    border-radius: 30px; 
+}
+/* Article 5 */
+.image-container2{
+    background: url("../assets/5.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 350px;
+    border-radius: 30px; 
+}
+/* Article 6 */
+.image-container2{
+    background: url("../assets/6.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 350px;
+    border-radius: 30px; 
+}
+/* Article 7 */
+.image-container2{
+    background: url("../assets/7.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 350px;
+    border-radius: 30px; 
+}

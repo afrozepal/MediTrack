@@ -1,0 +1,126 @@
+.text-body-emphasis1 {
+    color: #2F3059;
+}
+.logo {
+    width: 150px; /* Smaller width */
+    height: auto;
+    margin-left: -25px;
+    margin-bottom: -50px;
+}
+/* Button colors */
+.btn-custom {
+    background-color: #BAB2EF; 
+    border-color: #BAB2EF; 
+    color: #fff; /* White text color */
+}
+
+.btn-custom:hover {
+    background-color:#2F3059;
+    border-color: #2F3059; 
+    color: #fff; 
+}
+
+/* background image of Box  */
+.bg-image{
+    background-image: url('../assets/bg-img-real.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 550px; 
+    margin-top: 120px;
+}
+.simple-side-image{
+    height: 550px;
+    width: 400px;
+    margin-top: -120px;
+}
+/* Styling Navbar */
+.heading-text-color{
+    color: #2F3059; 
+}
+.bg-body-coloured{
+    background-color: #BAB2EF;
+}
+.dimession-home{
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.bgNav-color{
+    background-color: #BAB2EF;
+    color: #2F3059; 
+}
+.bgNav-color:hover{
+    background-color: #BAB2EF;
+}
+.text-heading{
+    color: #2F3059; 
+    margin-bottom: -10px;
+}
+/* .item-margin{
+    margin-bottom: 8px;
+} */
+.text-heading1{
+    color: #2F3059;
+    margin-bottom: 5px;
+}
+.text-heading1:hover{
+    color: #2F3059; 
+    font-weight: bold;
+    background-color: #BAB2EF;
+}
+.navbar-nav{
+    background-color: #BAB2EF;
+}
+.navbar-nav:hover{
+    background-color: #BAB2EF;
+}
+
+/* Styling Services Section */
+.card1-image{
+    background-image: url('../assets/purple-flower.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.card2-image{
+    background-image: url('../assets/therapist.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.card3-image{
+    background-image: url('../assets/purple-med.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.services-heading{
+    color:#2F3059;
+    font-weight: bold;
+}
+
+/* About Section */
+.about-heading{
+    color:#2F3059;
+    margin-left:10px; 
+    font-weight: bold;
+    margin-bottom: 25px;
+    /* margin-top: 20px; */
+}
+.para-text{
+    color: #2F3059;
+    font-weight: 400;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+/* Styling Contact Us Section */
+.text-design-contactus{
+    color: #2F3059; 
+}
+
+.form-control {
+    width: 350px;
+    background-color: #bab2efdc;   
+}
