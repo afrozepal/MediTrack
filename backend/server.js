@@ -2,11 +2,12 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require('body-parser');
 const mongoose = require('./mongo');
-const User = require('./model');
+const User = require('../backend/models/model');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors({ origin: true, credentials: true }));
+
 
 app.get('/getByEmail', async (req, res) => {
 
@@ -89,6 +90,71 @@ app.post("/sig", async (req, res) => {
     }
 }
 );
+
+// Route for sending reset password link to email
+app.post('/forgotPassword', async (req, res) => {
+    const { email } = req.body;
+
+    try {
+        // Check if the email exists in the database
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Generate a random token (you can use packages like `crypto` for this)
+        const token = generateRandomToken(); // Implement this function
+
+        // Save the token and expiry time to the user document
+        user.resetPasswordToken = token;
+        user.resetPasswordExpires = Date.now() + 3600000; // Token expiry time (1 hour in milliseconds)
+        await user.save();
+
+        // Send the reset password link to the user's email
+        sendResetPasswordEmail(user.email, token); // Implement this function
+
+        res.json({ message: 'Reset password link sent to your email' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+// Route for resetting password with token
+app.post('/resetPassword', async (req, res) => {
+    const { token, newPassword, confirmPassword } = req.body;
+
+    try {
+        // Find user by reset token and check if token is valid
+        const user = await User.findOne({ resetPasswordToken: token, resetPasswordExpires: { $gt: Date.now() } });
+        if (!user) {
+            return res.status(400).json({ error: 'Invalid or expired token' });
+        }
+
+        // Check if newPassword and confirmPassword match
+        if (newPassword !== confirmPassword) {
+            return res.status(400).json({ error: 'Passwords do not match' });
+        }
+
+        // Hash the new password
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        // Update user's password and clear the reset token fields
+        user.password = hashedPassword;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpires = undefined;
+        await user.save();
+
+        res.json({ message: 'Password reset successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+
+
+
 
 app.listen(8000, () => {
     console.log("Server listening on port 8000");

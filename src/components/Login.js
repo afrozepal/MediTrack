@@ -49,7 +49,7 @@ const Login = () => {
     };
 
     if (loggedIn) {
-        return <Link to="/profile" />; // Redirect to profile page if loggedIn is true
+        return <Link to="/profile" />;
     }
 
     return (
@@ -65,6 +65,7 @@ const Login = () => {
                         </div>
                         <p className="h4 fw text-body-emphasis1 lh-1 mb-3">Embracing growth, one step at a time.</p>
                         <p className="text-body-emphasis1 lead">Welcome back! Please log in with your existing account credentials. If you're new here, feel free to sign up for an account to get started.</p>
+                        <p className="text-body-emphasis1 lead"><i>Click here if you <Link to="/forgotpass" className='forgot-link'>Forgot Password</Link></i></p>
                     </div>
                     <div className="form-side col-md-10 mx-auto col-lg-5">
                         <form className="bg-color p-4 p-md-5 rounded-3" onSubmit={handleSubmit}>

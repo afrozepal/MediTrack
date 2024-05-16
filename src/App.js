@@ -12,7 +12,7 @@ import Article4 from './components/Article4';
 import Article5 from './components/Article5';
 import Article6 from './components/Article6';
 import Article7 from './components/Article7';
-
+import ForgotPassword from './components/ForgotPassword';
 
 const App = () => {
     return (
@@ -23,6 +23,7 @@ const App = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/forgotpass" element={<ForgotPassword />} />
                     <Route path="/article1" element={<Article1 />} />
                     <Route path="/article2" element={<Article2 />} />
                     <Route path="/article3" element={<Article3 />} />
