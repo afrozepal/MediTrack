@@ -13,7 +13,6 @@
     background-color: #BAB2EF; 
     border-color: #BAB2EF; 
     color: #2F3059; /* White text color */
-    width: 400px;
 }
 
 .btn-custom:hover {
@@ -39,29 +38,30 @@
     width: 400px;
     margin-top: -120px;
 }
-.form-side-login{
+.form-side{
     margin-left: -200px;
-    width: 450px;
 }
 .form-color {
+    width: 420px;
     background-color: #2F3059;
     color: #2F3059; /* White text color for contrast */
 }
-.form-feild-color-login{
+.form-feild-color{
     background-color: #BAB2EF;
     border-color: #BAB2EF; 
     width: 400px;
 }
 
-.form-control{
+.form-control {
+    background-color: #bab2efdc;  
     width: 400px;
-    background-color: #bab2efdc;   
 }
 
-.bg-color-login{
+.bg-color{
     background-color:  #404179d0;
     border: #404179d0; 
-    margin-left: -60px;
+    width: 500px;
+    margin-left: -200px;
 }
 .remember-me-text{
     color: white; 
@@ -72,6 +72,6 @@
 .separation-color{
     color: white; 
 }
-.forgot-link{
-    color: #404179d0;
+.form-floating{
+    width: 500px;
 }

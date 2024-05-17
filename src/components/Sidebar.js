@@ -21,7 +21,7 @@ const Sidebar = () => {
         <>
             <main className="d-flex flex-nowrap">
                 <div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style={{ width: '280px', position: 'fixed' }}>
-                    <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                    <a href="/homepage" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                         <img src={logo} alt="Logo" width="40" height="40" className=" d-inline-block align-text-top" />
                         <span className="sidebar-heading">MindMate</span>
                     </a>
@@ -34,50 +34,48 @@ const Sidebar = () => {
                             </a>
                         </li>
                         <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
-                            <a href="/" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
+                            <a href="/profile" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={article} alt="" />
                                 <span className='option-color ms-2 d-sm-inline'>Articles</span>
                             </a>
                         </li>
                         <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
-                            <a href="/" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
+                            <a href="/diary" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={diary} alt="" />
                                 <span className='ms-2 d-sm-inline'>Diary
                                 </span>
                             </a>
                         </li>
                         <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
-                            <a href="/" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
+                            <a href="/homework" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={hw} alt="" />
                                 <span className='ms-2 d-sm-inline'>Homework</span>
                             </a>
                         </li>
                         <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
-                            <a href="/" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
+                            <a href="/reports" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={rep} alt="" />
                                 <span className='ms-2 d-sm-inline'>Reports</span>
                             </a>
                         </li>
                         <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
-                            <a href="/" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
+                            <a href="/playlist" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={music} alt="" />
                                 <span className='ms-2 d-sm-inline'>Playlists</span>
                             </a>
                         </li>
                         <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
-                            <a href="/" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
+                            <a href="/therapist" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={doc} alt="" />
                                 <span className='ms-2 d-sm-inline'>Therapist</span>
                             </a>
                         </li>
-
                         <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
-                            <a href="/" className='Assistant-design nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
+                            <a href="/assistant" className='Assistant-design nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={chat} alt="" />
                                 <span className='Assistant-design ms-2 d-sm-inline'>Assistant</span>
                             </a>
                         </li>
-
                     </ul>
                     {/* <hr />
                     <div className="dropdown">

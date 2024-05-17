@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 import logo1 from '../assets/blue-logo.png';
 import Navbar from '../components/Navbar';
@@ -9,12 +9,11 @@ import '../styles/loginstyle.css';
 const ForgotPassword = () => {
     const [formData, setFormData] = useState({
         email: '',
-        password: ''
+        password: '',
+        confirmPassword: ''
     });
 
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [userExists, setUserExists] = useState(false); // New state to track if user exists
-    const [forgotPassword, setForgotPassword] = useState(false); // New state for forgot password
+    const [forgot, setforgot] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,38 +23,33 @@ const ForgotPassword = () => {
         e.preventDefault();
 
         try {
+            if (formData.password !== formData.confirmPassword) {
+                alert('Passwords do not match!');
+                return;
+            }
+
             const response = await axios.post('http://localhost:8000/sig', {
                 email: formData.email,
                 password: formData.password,
-                action: 'login'
+                action: 'forgotpassword'
             });
 
-            if (response.data === 'exist') {
-                alert('Login successful!');
-                setLoggedIn(true); // Set loggedIn state to true
+            if (response.data === 'success') {
+                alert("Password Reset Successful")
+                setforgot(true);
+
             } else if (response.data === 'notexist') {
                 alert('User does not exist!');
-                setUserExists(false); // Update userExists state
-            } else if (response.data === 'invalid') {
-                alert('Invalid credentials!');
-                setUserExists(true); // Update userExists state
+
             } else {
-                alert('Login failed!');
-                setUserExists(true); // Update userExists state
+                alert('Password change failed!');
+
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('Login failed!');
+            alert('Password change failed!');
         }
     };
-
-    const handleForgotPassword = () => {
-        setForgotPassword(true);
-    };
-
-    if (loggedIn) {
-        return <Link to="/profile" />;
-    }
 
     return (
         <>
@@ -70,7 +64,6 @@ const ForgotPassword = () => {
                         </div>
                         <p className="h4 fw text-body-emphasis1 lh-1 mb-3">Embracing growth, one step at a time.</p>
                         <p className="text-body-emphasis1 lead">You can reset your password here.</p>
-                        {/* <button onClick={handleForgotPassword} className="btn btn-link text-body-emphasis1">Forgot Password?</button> */}
                     </div>
                     <div className="form-side col-md-10 mx-auto col-lg-5">
                         <div className="form-side col-md-10 mx-auto col-lg-5">
@@ -97,27 +90,23 @@ const ForgotPassword = () => {
                                         value={formData.password}
                                         onChange={handleChange}
                                     />
-                                    <label htmlFor="floatingPassword">Password</label>
+                                    <label htmlFor="floatingPassword">New Password</label>
                                 </div>
                                 <div className="form-floating mb-3">
                                     <input
                                         type="password"
                                         className="form-feild-color form-control"
-                                        id="floatingPassword"
-                                        name="password"
-                                        placeholder="Confirm Password"
-                                        value={formData.password}
+                                        id="floatingConfirmPassword"
+                                        name="confirmPassword"
+                                        placeholder="Confirm New Password"
+                                        value={formData.confirmPassword}
                                         onChange={handleChange}
                                     />
-                                    <label htmlFor="floatingPassword">Password</label>
+                                    <label htmlFor="floatingConfirmPassword">Confirm New Password</label>
                                 </div>
-
-                                {forgotPassword ? (
-                                    <Link to="/login" className="btn-custom w-100 btn btn-lg fw-bold">Reset Password</Link>
-                                ) : (
-                                    <Link to="/" className="btn-custom w-100 btn btn-lg fw-bold" type="submit">Reset Password</Link>
-                                )}
-
+                                {forgot ? (<Link to='/login' type="submit" className="btn-custom w-100 btn btn-lg fw-bold">Reset Password</Link>)
+                                    : (<button type="submit" className="btn-custom w-100 btn btn-lg fw-bold">Reset Password</button>)
+                                }
                                 <hr className="separation-color my-4" />
                                 <small className="text-color">By Clicking Reset Password, you will be redirected to login page.</small>
                             </form>

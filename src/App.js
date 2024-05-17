@@ -2,9 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import { useState } from 'react';
 import HomePage from './components/HomePage';
-import Login from './components/Login';
+import { Login } from './components/Login';
 import SignUp from './components/SignUp';
-import Profile from './components/Profile';
+import Reporting from '../src/components/Reports'
+import { Profile } from './components/Profile';
 import Article1 from './components/Article1';
 import Article2 from './components/Article2';
 import Article3 from './components/Article3';
@@ -24,6 +25,7 @@ const App = () => {
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/forgotpass" element={<ForgotPassword />} />
+                    <Route path="/reports" element={<Reporting />} />
                     <Route path="/article1" element={<Article1 />} />
                     <Route path="/article2" element={<Article2 />} />
                     <Route path="/article3" element={<Article3 />} />
@@ -38,37 +40,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-
-
-
-
-
-// // App.js
-// import React from 'react'
-// import { useState } from 'react';
-// import HomePage from './components/HomePage';
-// import Login from './components/Login';
-// import SignUp from './components/SignUp';
-
-// const App = () => {
-//     const [loginVisible, setLoginVisible] = useState(false);
-//     const [signUpVisible, setSignUpVisible] = useState(false);
-
-//     return (
-//         <div className="App">
-//             {loginVisible && <Login setLoginVisible={setLoginVisible} />}
-//             {signUpVisible && <SignUp setSignUpVisible={setSignUpVisible} />}
-//             {!loginVisible && !signUpVisible && (
-//                 <HomePage
-//                     setLoginVisible={setLoginVisible}
-//                     setSignUpVisible={setSignUpVisible}
-//                 />
-//             )}
-//         </div>
-//     );
-// };
-
-// export default App;

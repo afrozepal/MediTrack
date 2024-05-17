@@ -7,7 +7,10 @@ import axios from 'axios'; // Import Axios
 
 import '../styles/signupstyle.css';
 
-const SignUp = () => {
+const SignUp = (props) => {
+    const id = props._id;
+    const name = props.username;
+
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -52,7 +55,7 @@ const SignUp = () => {
     };
 
     if (signup) {
-        return <Link to="/login" />;
+        return <Link to={`/login/${id}/${encodeURIComponent(name)}`} />;
     }
 
 
@@ -109,7 +112,7 @@ const SignUp = () => {
                                 <label htmlFor="password">Password</label>
                             </div>
                             {userExists ? (
-                                <Link to="/login" className="btn-custom w-100 btn btn-lg fw-bold">Login First</Link>
+                                <Link to={`/login/${id}/${encodeURIComponent(name)}`} className="btn-custom w-100 btn btn-lg fw-bold">Login First</Link>
                             ) : (
                                 <button className="btn-custom w-100 btn btn-lg fw-bold" type="submit">SignUp</button>
                             )}
