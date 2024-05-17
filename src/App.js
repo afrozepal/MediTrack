@@ -1,19 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// import { useState } from 'react';
 import HomePage from './components/HomePage';
 import { Login } from './components/Login';
 import SignUp from './components/SignUp';
-import Reporting from '../src/components/Reports'
-import { Profile } from './components/Profile';
-import Article1 from './components/Article1';
-import Article2 from './components/Article2';
-import Article3 from './components/Article3';
-import Article4 from './components/Article4';
-import Article5 from './components/Article5';
-import Article6 from './components/Article6';
-import Article7 from './components/Article7';
+import Reporting from '../src/components/Reports';
+import Profile from './components/Profile';
+import Article from './components/Article1';
 import ForgotPassword from './components/ForgotPassword';
+import ChatInterface from './components/Therapist';
 
 const App = () => {
     return (
@@ -26,13 +20,8 @@ const App = () => {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/forgotpass" element={<ForgotPassword />} />
                     <Route path="/reports" element={<Reporting />} />
-                    <Route path="/article1" element={<Article1 />} />
-                    <Route path="/article2" element={<Article2 />} />
-                    <Route path="/article3" element={<Article3 />} />
-                    <Route path="/article4" element={<Article4 />} />
-                    <Route path="/article5" element={<Article5 />} />
-                    <Route path="/article6" element={<Article6 />} />
-                    <Route path="/article7" element={<Article7 />} />
+                    <Route path="/article/:id" element={<Article />} />
+                    <Route path="/therapist" element={<ChatInterface />} />
                 </Routes>
             </div>
         </Router>

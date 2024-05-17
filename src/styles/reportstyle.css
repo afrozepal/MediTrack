@@ -39,3 +39,12 @@
     padding: 15px;
     margin: 10px;
 }
+.Report-heading2{
+    font-weight: bold;
+    color:#2F3059;
+    margin-bottom: 30px;
+    font-size: 25px;
+}
+.table-color{
+    color: #2F3059;
+}

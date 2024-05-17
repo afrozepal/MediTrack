@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import axios from 'axios';
 import logo1 from '../assets/blue-logo.png';
 import Navbar from '../components/Navbar';
@@ -7,14 +7,14 @@ import Footer from '../components/Footer';
 import '../styles/forgotstyle.css';
 
 const Login = () => {
-
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
 
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [userExists, setUserExists] = useState(false); // New state to track if user exists
+    const navigate = useNavigate(); // Initialize useNavigate for redirection
+
+    const [userExists, setUserExists] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,28 +30,28 @@ const Login = () => {
                 action: 'login'
             });
 
-            if (response.data === 'exist') {
+            if (response.data.token) {
+                // Store JWT token and username in local storage
+                localStorage.setItem('token', response.data.token);
+                localStorage.setItem('username', response.data.username);
+
                 alert('Login successful!');
-                setLoggedIn(true); // Set loggedIn state to true
+                navigate('/profile'); // Redirect to profile page
             } else if (response.data === 'notexist') {
                 alert('User does not exist!');
-                setUserExists(false); // Update userExists state
+                setUserExists(false); 
             } else if (response.data === 'invalid') {
                 alert('Invalid credentials!');
-                setUserExists(true); // Update userExists state
+                setUserExists(true); 
             } else {
                 alert('Login failed!');
-                setUserExists(true); // Update userExists state
+                setUserExists(true); 
             }
         } catch (error) {
             console.error('Error:', error);
             alert('Login failed!');
         }
     };
-
-    if (loggedIn) {
-        return <Link to='/profile'> </Link>;
-    }
 
     return (
         <>
@@ -94,13 +94,10 @@ const Login = () => {
                                 />
                                 <label htmlFor="floatingPassword">Password</label>
                             </div>
-                            {/* Conditional rendering based on userExists state */}
-                            {/* Takes the user to signup page if login is not successful or account is not made and takes the user to their ptofile when logged in  */}
-                            {userExists ? (
+                            {userExists && (
                                 <Link to='/signup' className="btn-custom w-100 btn btn-lg fw-bold">Sign Up First</Link>
-                            ) : (
-                                <Link to='/profile' className="btn-custom w-100 btn btn-lg fw-bold" type="submit">Login</Link>
                             )}
+                            <button className="btn-custom w-100 btn btn-lg fw-bold" type="submit">Login</button>
                             <hr className="separation-color my-4" />
                             <small className="text-color">By clicking Login, you will go to your account.</small>
                         </form>
@@ -114,5 +111,3 @@ const Login = () => {
 };
 
 export { Login };
-
-

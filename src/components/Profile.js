@@ -1,19 +1,10 @@
-// Profile.js - it may seem profile but this is the Articles page 
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Sidebar from './Sidebar'; // Make sure to import your Sidebar component
 import '../styles/Profile.css'
 import { Link } from 'react-router-dom';
-import searchIcon from '../assets/icons8-search-100.png'
-// import img1 from '../assets/orange.jpg'
-// import img2 from '../assets/med.jpg'
-// import img3 from '../assets/3.jpg'
-// import img4 from '../assets/4.jpg'
-// import img5 from '../assets/5.jpg'
-// import img6 from '../assets/6.jpg'
-// import img7 from '../assets/7.jpg'
-
+import searchIcon from '../assets/icons8-search-100.png';
+import withAuth from '../utils/withAuth';
 
 function Profile(props) {
     const [ArticleSchema, setArticleSchema] = useState([]);
@@ -23,7 +14,7 @@ function Profile(props) {
         axios.get('http://localhost:8000/getarticles')
             .then(ArticleSchema => setArticleSchema(ArticleSchema.data))
             .catch(err => console.log(err))
-    }, [])
+    }, []);
 
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
@@ -33,6 +24,7 @@ function Profile(props) {
         return article.title.toLowerCase().includes(searchQuery.toLowerCase());
     });
 
+    const username = localStorage.getItem('username');
 
     return (
         <>
@@ -53,7 +45,7 @@ function Profile(props) {
                             <a href="/" className="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle" />
                             </a>
-                            <p>Wecome Username</p>
+                            <p>Welcome {username}</p> {/* Display the username here */}
                             <ul className="dropdown-menu text-small shadow">
                                 <li><a className="dropdown-item" href="/">My Profile</a></li>
                                 <li><a className="dropdown-item" href="/">Settings</a></li>
@@ -82,7 +74,7 @@ function Profile(props) {
                                             <p className="card-text">{art.tagline}</p>
                                             <div className="d-flex justify-content-between align-items-center">
                                                 <div className="btn-group">
-                                                    <Link to="/article1" type="button" className="btn btn-sm" onClick={() => console.log('Link to article1 clicked')}>View</Link>
+                                                    <Link to={`/article/${art._id}`} type="button" className="btn btn-sm" onClick={() => console.log('Link to article1 clicked')}>View</Link>
                                                     {/* <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button> */}
                                                 </div>
                                                 <small className="text-body-secondary1">{art.publishDate}</small>
@@ -98,4 +90,4 @@ function Profile(props) {
     );
 };
 
-export { Profile };
+export default withAuth(Profile);

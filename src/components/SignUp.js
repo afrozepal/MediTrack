@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import logo1 from '../assets/blue-logo.png';
-import axios from 'axios'; // Import Axios
+import axios from 'axios';
 
 import '../styles/signupstyle.css';
 

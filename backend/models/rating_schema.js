@@ -1,19 +1,20 @@
+// backend/models/ratingSchema.js
 const mongoose = require('mongoose');
 
-// Define a schema for the ratings data
 const ratingSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User', // Reference to the User model
+        ref: 'User',
         required: true
     },
+    week: {
+        type: String,
+        required: true
+    }, // e.g., '2024-20' for the 20th week of 2024
     ratings: {
         type: [Number],
         required: true
-    }
+    } // Array of 7 ratings
 });
 
-// Create a model based on the schema
-const Rating = mongoose.model('Rating', ratingSchema);
-
-module.exports = Rating;
+module.exports = mongoose.model('Rating', ratingSchema);
