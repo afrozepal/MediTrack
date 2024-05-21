@@ -1,0 +1,65 @@
+.homework1-container {
+    position: absolute;
+    width: 50%; /* Adjust width as needed */
+    height: 60%; /* Adjust height as needed */
+    top: 20%;
+    left: 20%;
+  }
+  
+  .homework1-icon {
+    color: black;
+    background-color: #FBDCE4;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .homework2-container {
+    position: absolute;
+     top: 40%;
+    left: 20%;
+  }
+  
+  .homework2-icon {
+    color: wheat;
+    width: 95%; /* Adjust width as needed */
+    height: 60%; /* Adjust height as needed */
+   
+    background-color:#404179;
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .options-container {
+    display: flex;
+  }
+  
+  .rounded-box {
+    display: flex;
+    width:140px;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border-radius: 10px;
+    margin-right: 10px;
+    color: white;
+    font-weight: bold;
+    font-size:17px;
+  }
+  
+  .completed {
+    background-color: #6BB9F0;
+  }
+  
+  .start {
+    background-color: #F0C06B;
+  }
+  
+  .submit {
+    background-color: #B96BF0;
+  }

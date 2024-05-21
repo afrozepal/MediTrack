@@ -46,14 +46,9 @@
     background-color: #2F3059;
     color: #2F3059; /* White text color for contrast */
 }
-.form-feild-color{
+.form-feild-color-forgot{
     background-color: #BAB2EF;
     border-color: #BAB2EF; 
-    width: 400px;
-}
-
-.form-control {
-    background-color: #bab2efdc;  
     width: 400px;
 }
 

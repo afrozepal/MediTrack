@@ -14,15 +14,15 @@ const HomePage = ({ setLoginVisible, setSignUpVisible }) => {
         <>
             <Navbar />
             <div id="home" className="container my-5">
-                <div className="bg-image row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+                <div className="bg-image-home row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
                     <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
                         <div className="d-flex align-items-center mb-3">
                             {/* <!-- <img src="./M-logo.png" alt="Logo" className="logo"> --> */}
                             <img src={logo} alt="Logo" className="logo" />
                             <h1 className="display-4 fw-bold lh-1 text-body-emphasis1">MindMate</h1>
                         </div>
-                        <p className="h4 fw text-body-emphasis1 lh-1 mb-3">Embracing growth, one step at a time.</p>
-                        <p className="text-body-emphasis1 lead">Empowering minds, transforming lives. MindMate is your partner in mental wellness, fostering resilience and flourishing communities through compassion and innovation.</p>
+                        <p className="h4 fw text-body-emphasis2 lh-1 mb-3">Embracing growth, one step at a time.</p>
+                        <p className="text-body-emphasis2 lead">Empowering minds, transforming lives. MindMate is your partner in mental wellness, fostering resilience and flourishing communities through compassion and innovation.</p>
                         <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                             <Link to="/login" className="btn btn-custom btn-lg px-4 me-sm-3 fw-bold">Login</Link>
                             <Link to="/signup" className="btn btn-custom btn-lg px-4 me-sm-3 fw-bold">Sign Up</Link>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo1 from '../assets/blue-logo.png';
 import Navbar from '../components/Navbar';
@@ -7,50 +7,23 @@ import Footer from '../components/Footer';
 import '../styles/loginstyle.css';
 
 const ForgotPassword = () => {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-        confirmPassword: ''
-    });
-
-    const [forgot, setforgot] = useState(false);
-
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+    const [email, setEmail] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confiermPass, setconfiermPass] = useState('');
+    const [role, setRole] = useState('client');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            if (formData.password !== formData.confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
-
-            const response = await axios.post('http://localhost:8000/sig', {
-                email: formData.email,
-                password: formData.password,
-                action: 'forgotpassword'
-            });
-
-            if (response.data === 'success') {
-                alert("Password Reset Successful")
-                setforgot(true);
-
-            } else if (response.data === 'notexist') {
-                alert('User does not exist!');
-
-            } else {
-                alert('Password change failed!');
-
+            const response = await axios.post('http://localhost:8000/forgot-password', { email, newPassword, role });
+            if (response.data.message === 'Password reset successful') {
+                navigate('/login');
             }
         } catch (error) {
-            console.error('Error:', error);
-            alert('Password change failed!');
+            console.error('Error resetting password', error);
         }
     };
-
     return (
         <>
             <Navbar />
@@ -71,42 +44,38 @@ const ForgotPassword = () => {
                                 <div className="form-floating mb-3">
                                     <input
                                         type="email"
-                                        className="form-feild-color form-control"
+                                        className="form-feild-color-forgot form-control"
                                         id="floatingInput"
                                         name="email"
                                         placeholder="name@example.com"
-                                        value={formData.email}
-                                        onChange={handleChange}
+                                        value={email} onChange={(e) => setEmail(e.target.value)} required
                                     />
                                     <label htmlFor="floatingInput">Email address</label>
                                 </div>
                                 <div className="form-floating mb-3">
                                     <input
                                         type="password"
-                                        className="form-feild-color form-control"
+                                        className="form-feild-color-forgot form-control"
                                         id="floatingPassword"
                                         name="password"
                                         placeholder="New Password"
-                                        value={formData.password}
-                                        onChange={handleChange}
-                                    />
+                                        value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
+
                                     <label htmlFor="floatingPassword">New Password</label>
                                 </div>
                                 <div className="form-floating mb-3">
                                     <input
                                         type="password"
-                                        className="form-feild-color form-control"
+                                        className="form-feild-color-forgot form-control"
                                         id="floatingConfirmPassword"
                                         name="confirmPassword"
                                         placeholder="Confirm New Password"
-                                        value={formData.confirmPassword}
-                                        onChange={handleChange}
-                                    />
+                                        value={confiermPass} onChange={(e) => setconfiermPass(e.target.value)} required />
+
                                     <label htmlFor="floatingConfirmPassword">Confirm New Password</label>
                                 </div>
-                                {forgot ? (<Link to='/login' type="submit" className="btn-custom w-100 btn btn-lg fw-bold">Reset Password</Link>)
-                                    : (<button type="submit" className="btn-custom w-100 btn btn-lg fw-bold">Reset Password</button>)
-                                }
+                                <Link to='/login' type="submit" className="btn-custom w-100 btn btn-lg fw-bold">Reset Password</Link>
+
                                 <hr className="separation-color my-4" />
                                 <small className="text-color">By Clicking Reset Password, you will be redirected to login page.</small>
                             </form>

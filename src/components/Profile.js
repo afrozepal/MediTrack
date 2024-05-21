@@ -5,16 +5,37 @@ import '../styles/Profile.css'
 import { Link } from 'react-router-dom';
 import searchIcon from '../assets/icons8-search-100.png';
 import withAuth from '../utils/withAuth';
+import { useSelector } from 'react-redux';
+
 
 function Profile(props) {
+    const username = useSelector(state => state.username);
     const [ArticleSchema, setArticleSchema] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
+    const { user } = props;
+    // const [userProfile, setUserProfile] = useState(null);
 
     useEffect(() => {
         axios.get('http://localhost:8000/getarticles')
             .then(ArticleSchema => setArticleSchema(ArticleSchema.data))
             .catch(err => console.log(err))
     }, []);
+
+    const fetchUserProfile = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const response = await axios.get('http://localhost:8000/userprofile', {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            // setUserProfile(response.data);
+        } catch (error) {
+            console.log('Error fetching user profile:', error);
+        }
+    };
+
+    fetchUserProfile();
 
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
@@ -23,8 +44,6 @@ function Profile(props) {
     const filteredArticles = ArticleSchema.filter(article => {
         return article.title.toLowerCase().includes(searchQuery.toLowerCase());
     });
-
-    const username = localStorage.getItem('username');
 
     return (
         <>
@@ -45,7 +64,7 @@ function Profile(props) {
                             <a href="/" className="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle" />
                             </a>
-                            <p>Welcome {username}</p> {/* Display the username here */}
+                            <p>Welcome {username} - {user.userId}</p> {/* Display the username here */}
                             <ul className="dropdown-menu text-small shadow">
                                 <li><a className="dropdown-item" href="/">My Profile</a></li>
                                 <li><a className="dropdown-item" href="/">Settings</a></li>

@@ -5,6 +5,7 @@ import '../styles/reportstyle.css';
 import Sidebar from './Sidebar';
 import searchIcon from '../assets/icons8-search-100.png';
 import withAuth from '../utils/withAuth';
+import { useSelector } from 'react-redux';
 
 function Reporting() {
     const [ratings, setRatings] = useState(Array(7).fill(null));
@@ -12,7 +13,8 @@ function Reporting() {
     const [week, setWeek] = useState('');
     const [previousWeek, setPreviousWeek] = useState('');
     const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('username');
+    // const userId = localStorage.getItem('username');
+    const username = useSelector(state => state.username);
 
     useEffect(() => {
         const currentWeek = getCurrentWeek();
@@ -119,7 +121,7 @@ function Reporting() {
                         <a href="/" className="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle" />
                         </a>
-                        <p>Welcome {userId}</p>
+                        <p>Welcome {username}</p>
                         <ul className="dropdown-menu text-small shadow">
                             <li><a className="dropdown-item" href="/">My Profile</a></li>
                             <li><a className="dropdown-item" href="/">Settings</a></li>

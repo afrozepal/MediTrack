@@ -21,7 +21,7 @@
 }
 
 /* background image of Box  */
-.bg-image{
+.bg-image-home{
     background-image: url('../assets/bg-img-real.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -118,9 +118,4 @@
 /* Styling Contact Us Section */
 .text-design-contactus{
     color: #2F3059; 
-}
-
-.form-control {
-    width: 350px;
-    background-color: #bab2efdc;   
 }

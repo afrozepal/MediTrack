@@ -5,14 +5,15 @@ import App from './App';
 // import Article1 from './components/Article1';
 // import Sidebar from './components/Sidebar';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import store from '../src/Redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
-    {/* <Article1 /> */}
-    {/* <Sidebar /> */}
-
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 

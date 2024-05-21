@@ -1,6 +1,10 @@
 /* loginstyle.css file */
 .text-body-emphasis1 {
     color: #2F3059;
+    margin-left: -20px;
+}
+.text-body-emphasis2 {
+    color: #2F3059;
 }
 .logo {
     width: 150px; /* Smaller width */
@@ -9,14 +13,14 @@
     margin-bottom: -50px;
 }
 /* Button colors */
-.btn-custom {
+.btn-custom-login {
     background-color: #BAB2EF; 
     border-color: #BAB2EF; 
     color: #2F3059; /* White text color */
     width: 400px;
 }
 
-.btn-custom:hover {
+.btn-custom-login:hover {
     background-color:#2F3059;
     border-color: #2F3059; 
     color: #fff; 
@@ -27,12 +31,13 @@
 } */
 
 /* background image of Box  */
-.bg-image{
-    /* background-image: url('//src/assets/bg-img-real.png'); */
+.bg-image-login{
+    background-image: url('../assets/bg-img-real.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 550px; 
+    height: 600px; 
+    margin-top: 130px;
 }
 .simple-side-image{
     height: 550px;
@@ -53,10 +58,10 @@
     width: 400px;
 }
 
-.form-control{
+/* .form-control{
     width: 400px;
     background-color: #bab2efdc;   
-}
+} */
 
 .bg-color-login{
     background-color:  #404179d0;
@@ -74,4 +79,7 @@
 }
 .forgot-link{
     color: #404179d0;
+}
+.text-login{
+    color: white; 
 }

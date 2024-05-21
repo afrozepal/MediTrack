@@ -1,0 +1,68 @@
+.chat-container {
+    position:relative;
+    left:50px;
+    top:20px;
+    max-width: 700px; 
+
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #BAB2EF;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 70%;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.sent {
+    align-self: flex-end;
+    background-color: #805ad5; 
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+}
+h1{
+    color: #38197a;
+}
+.received {
+    align-self: flex-start;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: #e5e5ea; 
+    color: black;
+}
+
+.input-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+.input-container input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+
+.input-container button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #805ad5; /* Purple color for send button */
+    color: white;
+    cursor: pointer;
+    outline: none;
+}
+
+.input-container button:hover {
+    background-color: #6c42b9; /* Darker purple color on hover */
+}

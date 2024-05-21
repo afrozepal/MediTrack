@@ -1,77 +1,73 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Sidebar from './Sidebar';
-import '../styles/ChatInterface.css'; // Import your CSS file for ChatInterface styling
+import withAuth from '../utils/withAuth';
+import Sidebar1 from '../components/Sidebar1';
 
-function ChatInterface({ currentUser, recipientUser }) {
-    const [messages, setMessages] = useState([]);
-    const [newMessage, setNewMessage] = useState('');
-    const [notification, setNotification] = useState(false);
+function TherapistProfile(props) {
+    const [clients, setClients] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const { user } = props;
+    const id = user.userId;
+    console.log(id);
+
 
     useEffect(() => {
-        fetchMessages();
-        const interval = setInterval(fetchMessages, 5000); // Poll for new messages every 5 seconds
-        return () => clearInterval(interval);
+        fetchClients();
     }, []);
 
-    const fetchMessages = async () => {
+    async function fetchClients() {
         try {
-            const response = await axios.get('/api/messages', {
+            const response = await axios.get('http://localhost:8000/getclients', {
                 params: {
-                    sender: currentUser._id,
-                    receiver: recipientUser._id
+                    therapistId: id // Replace with the actual therapist ID
                 }
             });
-            setMessages(response.data);
-            if (response.data.some(message => message.receiver === currentUser._id && !message.read)) {
-                setNotification(true); // Set notification if there are unread messages
-            }
+            setClients(response.data);
+            setLoading(false);
         } catch (error) {
-            console.error('Error fetching messages:', error);
+            console.error('Error fetching clients:', error);
         }
-    };
-
-    const sendMessage = async () => {
-        try {
-            await axios.post('/api/messages', {
-                sender: currentUser._id,
-                receiver: recipientUser._id,
-                content: newMessage
-            });
-            setNewMessage('');
-            fetchMessages(); // Refresh messages after sending
-        } catch (error) {
-            console.error('Error sending message:', error);
-        }
-    };
+    }
+    if (loading) {
+        return <div>;Loading...</div>;
+    }
 
     return (
-        <div className="container-fluid chat-container">
+        <div className="container">
+            <Sidebar1 />
             <div className="row">
-                <div className="col-md-3">
-                    <Sidebar />
-                </div>
-                <div className="col-md-9 chat-section">
-                    <div className="message-list">
-                        {messages.map(message => (
-                            <div key={message._id} className={`message ${message.sender === currentUser._id ? 'sent' : 'received'}`}>
-                                <div className="content">{message.content}</div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="message-input">
-                        <input type="text" value={newMessage} onChange={e => setNewMessage(e.target.value)} />
-                        <button className="btn btn-primary" onClick={sendMessage}>Send</button>
+                <div className="col-md-12 text-center">
+                    <h1 className="text-primary">Welcome to your therapist profile</h1>
+                    <div className="d-flex justify-content-center mb-4">
+                        <Link to="/schedule" className="btn btn-primary me-2">Schedule</Link>
+                        <Link to="/chat" className="btn btn-primary me-2">Chat</Link>
+                        <Link to="/billing" className="btn btn-primary">Billing</Link>
                     </div>
                 </div>
             </div>
-            {notification && (
-                <div className="notification">
-                    You have new messages!
+            <div className="row">
+                <div className="col-md-12">
+                    <h2>Clients:</h2>
+                    <div className="row">
+                        {clients.map(client => (
+                            <div className="col-md-4 mb-3" key={client._id}>
+                                <div className="card-body">
+                                    <h5 className="card-title"> {client.user.name}</h5>
+                                    <p className="card-text" ><strong>Email:</strong>; {client.user.email}</p>
+                                    <Link to={`/addhwt/${client.user._id}`} className="btn btn-primary">Assign</Link>
+                                    <Link to={`/check/${client.user._id}`} className="btn btn-primary">Check</Link>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
                 </div>
-            )}
+            </div>
         </div>
     );
 }
 
-export default ChatInterface;
+export default withAuth(TherapistProfile);
+

@@ -1,6 +1,10 @@
 /* loginstyle.css file */
 .text-body-emphasis1 {
     color: #2F3059;
+    margin-left: -100px;
+}
+.text-body-emphasis2 {
+    color: #2F3059;
 }
 .logo {
     width: 150px; /* Smaller width */
@@ -9,25 +13,26 @@
     margin-bottom: -50px;
 }
 /* Button colors */
-.btn-custom {
+.btn-custom-signup {
     background-color: #BAB2EF; 
     border-color: #BAB2EF; 
     color: #2F3059; /* White text color */
 }
 
-.btn-custom:hover {
+.btn-custom-signup:hover {
     background-color:#2F3059;
     border-color: #2F3059; 
     color: #fff; 
 }
 
 /* background image of Box  */
-.bg-image{
-    /* background-image: url('//src/assets/bg-img-real.png'); */
+.bg-image-sign{
+    background-image: url('../assets/bg-img-real.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 550px; 
+    height: 700px; 
+    margin-top: 130px;
 }
 .simple-side-image{
     height: 550px;
@@ -41,7 +46,7 @@
     background-color: #2F3059;
     color: #2F3059; /* White text color for contrast */
 }
-.form-feild-color{
+.form-feild-color-signup{
     background-color: #BAB2EF;
     border-color: #BAB2EF; 
 }
@@ -59,6 +64,12 @@
     color: white; 
 }
 .form-control {
+    width: 430px;
+    background-color: #bab2efdc;
+}
+.form-floating{
     width: 350px;
-    background-color: #bab2efdc;   
+}
+.text-signup{
+    color: white; 
 }
