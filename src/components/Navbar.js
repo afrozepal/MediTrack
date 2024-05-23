@@ -67,6 +67,9 @@ const Navbar = () => {
                         <li className={`nav-item ${activeItem === 'contact' ? 'active' : ''}`}>
                             <a className="text-heading1 nav-link" href="#contact" onClick={() => handleClick('contact')}>Contact</a>
                         </li>
+                        <li className={`nav-item ${activeItem === 'team' ? 'active' : ''}`}>
+                            <a className="text-heading1 nav-link" href="#team" onClick={() => handleClick('team')}>Team</a>
+                        </li>
                     </ul>
                     <div className="underline" ref={underlineRef}></div>
                 </div>

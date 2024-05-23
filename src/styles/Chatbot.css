@@ -1,13 +1,8 @@
 .chat-container {
-    position:relative;
-    left:50px;
-    top:20px;
-    max-width: 700px; 
-
-    margin: auto;
-    padding: 20px;
+    background-color: #bab2efdc;
     border-radius: 10px;
-    background-color: #BAB2EF;
+    padding: 10px;
+    width: 900px;
 }
 
 .chat-messages {
@@ -41,28 +36,31 @@ h1{
 }
 
 .input-container {
-    display: flex;
-    margin-top: 20px;
+    width: 700px;
 }
 
 .input-container input {
     flex: 1;
+    width: 750px;
     padding: 10px;
     border-radius: 20px;
     border: none;
     outline: none;
 }
 
-.input-container button {
-    padding: 10px 20px;
-    border-radius: 20px;
-    border: none;
-    background-color: #805ad5; /* Purple color for send button */
-    color: white;
-    cursor: pointer;
-    outline: none;
+.btn-custom-chatbot{
+    width: 60px;
+    margin-left: 760px;
+    margin-top: -60px;
+    color: white; 
+    background-color: #38197a; 
+}
+.btn-custom-chatbot:hover{
+    background-color: #2F3059;
+    color: white; 
 }
 
-.input-container button:hover {
-    background-color: #6c42b9; /* Darker purple color on hover */
+.dropdown-chatbot{
+    margin-left: 950px;
+    margin-top: 30px;
 }

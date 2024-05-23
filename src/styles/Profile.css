@@ -1,4 +1,4 @@
-.search-bar {
+.search-bar1 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,13 +8,22 @@
 }
 
 .search-input {
-    width: 300px;
+    width: 900px;
+    background-color: #bab2efdc;
     margin-right: 10px;
+    height: 40px;
+    border-radius: 7px;
+    border-color: #bab2efdc;
+    color: white; 
+    margin-right: 20px;
 }
 
 .btndesign{
     background-color: #bab2efdc;
     border-color: #bab2efdc;
+    width: 42px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 .btndesign:hover{
     background-color: #2F3059;
@@ -56,8 +65,14 @@
     margin-bottom: 30px;
     font-size: 30px;
 }
-
-.dropdown{
-    margin-left: 940px;
-    margin-top: -45px;
+.username-text{
+    font-weight: 700;
+    color:#2F3059;
+    margin-top: -30px;
+    margin-left: -200px;
+    font-size: 20px;
+}
+.dropdown-profile{
+    margin-left: 950px;
+    margin-top: -50px;
 }

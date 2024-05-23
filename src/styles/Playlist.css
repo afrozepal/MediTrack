@@ -1,11 +1,12 @@
-.card-body {
+.playcardbody {
     padding: 20px;
     display: flex;
+    width: 360px;
     flex-direction: column;
     align-items: center;
   }
   
-  .card-title {
+  .playcardtitle {
     font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 10px;
@@ -15,7 +16,7 @@
     left:25%;
     justify-content: center;
   }
-  .card-text {
+  .playtext {
     color: #666;
     font-size: 1rem;
     margin-bottom: 15px;
@@ -41,13 +42,12 @@
     clear: both;
   }
    
-  .card {
-   
-    margin: 20px;
+  .playcard {
+    width: 360px;
   }
   
-  .card-img-top {
-    width: 307px;
+  .play-card-image {
+    width: 360px;
     height: 100px;
     object-fit: cover;
   }

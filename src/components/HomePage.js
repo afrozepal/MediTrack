@@ -8,6 +8,7 @@ import ContactUsSection from './ContactUsSection';
 import logo from '../assets/blue-logo.png';
 import girl from '../assets/yoga-girl-white.png';
 import '../styles/Homepage.css';
+import TeamSection from './Team';
 
 const HomePage = ({ setLoginVisible, setSignUpVisible }) => {
     return (
@@ -19,7 +20,7 @@ const HomePage = ({ setLoginVisible, setSignUpVisible }) => {
                         <div className="d-flex align-items-center mb-3">
                             {/* <!-- <img src="./M-logo.png" alt="Logo" className="logo"> --> */}
                             <img src={logo} alt="Logo" className="logo" />
-                            <h1 className="display-4 fw-bold lh-1 text-body-emphasis1">MindMate</h1>
+                            <h1 className="display-4 fw-bold lh-1 text-body-emphasis10">MindMate</h1>
                         </div>
                         <p className="h4 fw text-body-emphasis2 lh-1 mb-3">Embracing growth, one step at a time.</p>
                         <p className="text-body-emphasis2 lead">Empowering minds, transforming lives. MindMate is your partner in mental wellness, fostering resilience and flourishing communities through compassion and innovation.</p>
@@ -45,6 +46,9 @@ const HomePage = ({ setLoginVisible, setSignUpVisible }) => {
 
             {/* Contact section */}
             <ContactUsSection />
+
+            {/* Team section */}
+            <TeamSection />
 
             {/* Footer section */}
             <Footer />

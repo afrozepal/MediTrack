@@ -63,3 +63,36 @@
   .submit {
     background-color: #B96BF0;
   }
+  .btn-custom-homework{
+    background-color: #BAB2EF; 
+    border-color: #BAB2EF; 
+    color: #2F3059; /* White text color */
+    width: 200px;
+}
+
+.btn-custom-homework:hover {
+    background-color:#2F3059;
+    border-color: #2F3059; 
+    color: #fff; 
+}
+
+
+.search-bar-homework {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffff;
+  padding: 10px;
+  width: 800px;
+}
+
+.search-input-homework {
+  width: 900px;
+  background-color: #bab2efdc;
+  margin-right: 10px;
+  height: 40px;
+  border-radius: 7px;
+  border-color: #bab2efdc;
+  color: white; 
+  margin-right: 20px;
+}

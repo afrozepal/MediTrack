@@ -9,13 +9,13 @@
     margin-bottom: -50px;
 }
 /* Button colors */
-.btn-custom {
+.btn-custom-forgot {
     background-color: #BAB2EF; 
     border-color: #BAB2EF; 
     color: #2F3059; /* White text color */
 }
 
-.btn-custom:hover {
+.btn-custom-forgot:hover {
     background-color:#2F3059;
     border-color: #2F3059; 
     color: #fff; 
@@ -26,20 +26,22 @@
 } */
 
 /* background image of Box  */
-.bg-image{
-    /* background-image: url('//src/assets/bg-img-real.png'); */
+.bg-image-forgot{
+    background-image: url('../assets/bg-img-real.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    height: 550px; 
+    height: 600px; 
+    margin-top: 130px;
 }
 .simple-side-image{
     height: 550px;
     width: 400px;
     margin-top: -120px;
 }
-.form-side{
-    margin-left: -200px;
+.form-side-forgot{
+    margin-left: -100px;
+    width: 450px;
 }
 .form-color {
     width: 420px;
@@ -52,11 +54,11 @@
     width: 400px;
 }
 
-.bg-color{
+.bg-color-forgot{
     background-color:  #404179d0;
     border: #404179d0; 
     width: 500px;
-    margin-left: -200px;
+    margin-left: -100px;
 }
 .remember-me-text{
     color: white; 

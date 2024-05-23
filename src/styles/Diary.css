@@ -4,27 +4,29 @@
 .diary-title {
   text-align: center;
   color: #7e57c2; /* Purple text color */
-  font-family: 'Sacramento', cursive;}
+  font-family: 'Sacramento', cursive;
+}
+
 .diary-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-   
-  }
-  
-  .diary-content {
-    background-color: #BAB2EF; 
-    border: 1px solid white;
-    width: 50%;
-    max-width: 800px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
-  }
-  
-  
-  
+    margin-top: -200px; 
+    margin-left: -550px; 
+    width: 2000px;
+}
+
+.diary-content {
+  background-color: #BAB2EF; 
+  border: 1px solid white;
+  width: 50%;
+  max-width: 900px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+}
+
   .date-picker {
     margin-bottom: 20px;
   }

@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.style-image-home{
+    width: 25px;
+    background-color: #BAB2EF;
+    padding: 5px;
+    border-radius: 5px;
+}
+.style-image-home:hover{
+    background-color: #2F3059;
+}
+.sidebar-heading{
+    font-size: 20px;
+    color:#2F3059;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.line{
+    margin-top: 9px;
+}
+
+.nav-item:hover .nav-link {
+    background-color:#bdb9d4;
+}
+
+.nav-item:hover .style-image-home {
+    background-color: #2F3059;
+}
+
+.Assistant-design{
+    margin-top: 190px;
+    font-weight: bold;
+    color: #2F3059;
+}

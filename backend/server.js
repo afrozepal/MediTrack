@@ -158,6 +158,7 @@ app.post('/signup-here', async (req, res) => {
         }
         await user.save();
         res.status(201).json({ message: 'User created successfully', role });
+        sendEmail(email, 'Successful Signup', 'You have successfully signed up!');
     } catch (error) {
         console.error('Error creating user', error);
         res.status(500).json({ message: 'Error creating user', error });
@@ -182,8 +183,10 @@ app.post('/login-here', async (req, res) => {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
         const username = user.name;
+        const useremail = user.email;
+        const userpass = user.password;
         const token = jwt.sign({ id: user._id, role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token, role, username });
+        res.json({ token, role, username, useremail, userpass });
     } catch (error) {
         console.error('Error logging in', error);
         res.status(500).json({ message: 'Error logging in', error });
@@ -210,6 +213,7 @@ app.post('/forgot-password', async (req, res) => {
 
         user.password = await bcrypt.hash(newPassword, 10);
         await user.save();
+        sendEmail(email, 'Password Reset Succesfull', 'You have successfully changes your passowrd.');
         res.json({ message: 'Password reset successful' });
     } catch (error) {
         res.status(500).json({ message: 'Error resetting password', error });
@@ -247,7 +251,7 @@ app.listen(8000, () => {
 });
 
 // THEREPIST SIDE WORKING - UMAIMA 
-//-------------------------------------------------MY WORK--------------------------------------------------------------
+//-------------------------------------------------UMAIMA WORK--------------------------------------------------------------
 
 app.get('/getclients', async (req, res) => {
     try {
@@ -459,20 +463,17 @@ app.get('/therapistIds', async (req, res) => {
 app.get('/therapistswithclientcount', async (req, res) => {
     try {
         const therapistIds = await client.distinct('therapistId');
-
         const therapistsWithClientCount = await Promise.all(therapistIds.map(async (therapistId) => {
             const clientCount = await client.countDocuments({ therapistId });
             const therapist = await Therapist.findById(therapistId);
             return { _id: therapistId, name: therapist.name, email: therapist.email, clientCount };
-
         }));
-        console.log("HEELLLLLLLLLLLLLLLLLLL000000000000");
         res.status(200).json(therapistsWithClientCount);
     } catch (error) {
         console.error('Error counting clients for therapists:', error);
         res.status(500).json({ message: 'Internal server error' });
     }
-});
+})
 
 //-------------------------------------------------SIDRA COOKIES AND SESSIONS-----------------------------------------------
 
@@ -527,6 +528,7 @@ app.post("/diary", async (req, res) => {
         const { userId, date, entry } = req.body;
         if (!userId || !date || !entry) {
             return res.status(400).json({ error: 'Please provide all required fields' });
+
         }
         const existingEntry = await Diary.findOne({ userId, date: new Date(date) });
         if (existingEntry) {
@@ -546,7 +548,7 @@ app.post("/diary", async (req, res) => {
 app.get('/fetchdiary', async (req, res) => {
     const { date, userId } = req.query;
     try {
-        const diaryEntry = await Diary.findOne({ date, userId });
+        const diaryEntry = await Diary.findOne({ $cast: { date: 'date', userId: 'string' } });
         if (diaryEntry) {
             res.json({ entry: diaryEntry.entry });
         } else {

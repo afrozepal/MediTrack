@@ -4,6 +4,8 @@
     align-items: stretch;
     justify-content: space-between;
     padding: 20px;
+    margin-left: -20px;
+    margin-top: -20px;
   }
   
   .profile-container {
@@ -13,15 +15,19 @@
     align-items: center;
     padding: 200px;
     right: 350px;
-
+    background-color: #BAB2EF;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 600px;
+    width: 700px;
+    margin-left: 450px;
   }
   
   .profile-pic-container {
     position: relative;
     top:5px;
+    margin-top: -50px;
   }
   
   .profile-pic {
@@ -30,19 +36,20 @@
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
+    margin-top: -50px;
   }
   
   .change-pic-btn {
     position: absolute;
     bottom: 2px;
-    right: 10px;
-    
+    right: 3px;
     padding: 5px 10px;
     border: none;
     border-radius: 5px;
-    background-color: #BAB2EF;
+    background-color: #5e5886;
     color: #fff;
     cursor: pointer;
+    margin-right:--30px ;
   }
   
   .profile-info {
@@ -56,3 +63,26 @@
   .profile-info p {
     margin-bottom: 10px;
   }
+  .text-body-emphasis3 {
+    color: #2F3059;
+    font-weight: bold;
+}
+.text-body-emphasis4 {
+  color: #2F3059;
+  font-weight:400; 
+}
+.desc-profile{
+  width: 700px;
+    /*height: 60px;  */
+    background-color: #ffd1dc; 
+    border-color: #ffd1dc;
+    color: #2f3059;  
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+}
+
+.dropdown-myhome{
+  margin-left: 900px; 
+  margin-top: 30px;
+}

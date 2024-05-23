@@ -111,77 +111,79 @@ function Reporting() {
                     <Sidebar />
                 </div>
                 <div className="col-md-9">
-                    <div className="search-bar d-flex justify-content-center align-items-center">
-                        <input type="text" className="form-control search-input" placeholder="Search..." />
-                        <button className="btndesign btn btn-outline-secondary" type="button">
-                            <img src={searchIcon} alt="Search" width="20" height="20" />
-                        </button>
-                    </div>
-                    <div className="dropdown-rep">
-                        <a href="/" className="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle" />
-                        </a>
-                        <p>Welcome {username}</p>
-                        <ul className="dropdown-menu text-small shadow">
-                            <li><a className="dropdown-item" href="/">My Profile</a></li>
-                            <li><a className="dropdown-item" href="/">Settings</a></li>
-                            <li><hr className="dropdown-divider" /></li>
-                            <li><a className="dropdown-item" href="/">Sign out</a></li>
-                        </ul>
-                    </div>
-                    <br />
-                    <h2 className='Report-heading'>Reports</h2>
-                    <div className='desc-report'>Here You Can See Your Weekly Mood Reports. Day1 starts with Monday onwards.</div>
-                    <div className="container py-5">
-                        <h3 className='Report-heading2'>Previous Week's Ratings ({previousWeek})</h3>
-                        <table className="table table-bordered">
-                            <thead>
-                                <tr className='table-color'>
-                                    {['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'].map((day, index) => (
-                                        <th className='table-color' key={index}>{day}</th>
-                                    ))}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    {ratings.map((rating, index) => (
-                                        <td key={index}>{rating}</td>
-                                    ))}
-                                </tr>
-                            </tbody>
-                        </table>
-                        <button className="btn report-btn mt-4" onClick={() => generateGraph(ratings, 'previousRatingChart')}>Generate Graph</button>
-                        <div className="mt-5">
-                            <canvas id="previousRatingChart" width="300" height="150"></canvas>
+                    <div className="col-md-9">
+                        {/* <div className="search-bar1 d-flex justify-content-center align-items-center">
+                            <input type="text" className="search-inpu form-control" placeholder="Search..." value={searchQuery}
+                                onChange={handleSearchChange} />
+                            <button className="btndesign btn btn-outline-secondary" type="button">
+                                <img src={searchIcon} alt="Search" width="20" height="20" />
+                            </button>
+                        </div> */}
+                        <div className="dropdown-reports">
+                            <a href="/" className="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle" />
+                            </a>
+                            <p className='username-text'>Welcome {username}</p> {/* Display the username here */}
+                            <ul className="dropdown-menu text-small shadow">
+                                <li><a className="dropdown-item" href="/">My Profile</a></li>
+                                <li><hr className="dropdown-divider" /></li>
+                                <li><a className="dropdown-item" href="/">Sign out</a></li>
+                            </ul>
                         </div>
+                        <br />
+                        <h2 className='Report-heading'>Reports</h2>
+                        <div className='desc-report'>Here You Can See Your Weekly Mood Reports. Day1 starts with Monday onwards.</div>
+                        <div className="container py-5">
+                            <h3 className='Report-heading2'>Previous Week's Ratings ({previousWeek})</h3>
+                            <table className="table table-bordered">
+                                <thead>
+                                    <tr className='table-color'>
+                                        {['Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun'].map((day, index) => (
+                                            <th className='table-color' key={index}>{day}</th>
+                                        ))}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        {ratings.map((rating, index) => (
+                                            <td key={index}>{rating}</td>
+                                        ))}
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button className="btn report-btn mt-4" onClick={() => generateGraph(ratings, 'previousRatingChart')}>Generate Graph</button>
+                            <div className="mt-5">
+                                <canvas id="previousRatingChart" width="300" height="150"></canvas>
+                            </div>
 
-                        <h3 className="mt-5">Current Week's Ratings ({week})</h3>
-                        <div className="row">
-                            {ratings.map((rating, index) => (
-                                <div className="col-2" key={index}>
-                                    <label htmlFor={`rating${index}`} className="form-label">Day {index + 1}:</label>
-                                    <input
-                                        type="number"
-                                        className="reports"
-                                        id={`rating${index}`}
-                                        min="1"
-                                        max="5"
-                                        value={rating || ''}
-                                        onChange={(e) => handleRatingChange(index, parseInt(e.target.value))}
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                        <button className="btn report-btn mt-4" onClick={saveRatings}>Save Ratings</button>
-                        <button className="btn report-btn mt-4" onClick={() => generateGraph(ratings, 'currentRatingChart')}>Generate Graph</button>
-                        <div className="mt-5">
-                            <canvas id="currentRatingChart" width="300" height="150"></canvas>
+                            <h3 className="mt-5">Current Week's Ratings ({week})</h3>
+                            <div className="row">
+                                {ratings.map((rating, index) => (
+                                    <div className="col-2" key={index}>
+                                        <label htmlFor={`rating${index}`} className="form-label">Day {index + 1}:</label>
+                                        <input
+                                            type="number"
+                                            className="reports"
+                                            id={`rating${index}`}
+                                            min="1"
+                                            max="5"
+                                            value={rating || ''}
+                                            onChange={(e) => handleRatingChange(index, parseInt(e.target.value))}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                            <button className="btn report-btn mt-4" onClick={saveRatings}>Save Ratings</button>
+                            <button className="btn report-btn mt-4" onClick={() => generateGraph(ratings, 'currentRatingChart')}>Generate Graph</button>
+                            <div className="mt-5">
+                                <canvas id="currentRatingChart" width="300" height="150"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default withAuth(Reporting);

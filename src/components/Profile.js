@@ -53,28 +53,27 @@ function Profile(props) {
                         <Sidebar />
                     </div>
                     <div className="col-md-9">
-                        <div className="search-bar d-flex justify-content-center align-items-center">
-                            <input type="text" className="form-control search-input" placeholder="Search..." value={searchQuery}
+                        <div className="search-bar1 d-flex justify-content-center align-items-center">
+                            <input type="text" className="search-inpu form-control" placeholder="Search..." value={searchQuery}
                                 onChange={handleSearchChange} />
                             <button className="btndesign btn btn-outline-secondary" type="button">
                                 <img src={searchIcon} alt="Search" width="20" height="20" />
                             </button>
                         </div>
-                        <div className="dropdown">
+                        <div className="dropdown-profile">
                             <a href="/" className="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle" />
                             </a>
-                            <p>Welcome {username} - {user.userId}</p> {/* Display the username here */}
+                            <p className='username-text'>Welcome {username}</p> {/* Display the username here */}
                             <ul className="dropdown-menu text-small shadow">
                                 <li><a className="dropdown-item" href="/">My Profile</a></li>
-                                <li><a className="dropdown-item" href="/">Settings</a></li>
                                 <li><hr className="dropdown-divider" /></li>
                                 <li><a className="dropdown-item" href="/">Sign out</a></li>
                             </ul>
                         </div>
                         <br />
                         <h2 className='Articles-heading'>Articles</h2>
-
+                        <div className='desc-profile'>Here you can read different articles according to your mood and prefernces.</div>
                         {/* My articles start here */}
                         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                             {filteredArticles.map(art => (

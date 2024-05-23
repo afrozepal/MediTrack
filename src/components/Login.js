@@ -7,12 +7,13 @@ import logo1 from '../assets/blue-logo.png';
 import '../styles/loginstyle.css';
 import { useDispatch } from 'react-redux';
 import { setUsername } from '../Redux/action';
-
+import { setPassword } from '../Redux/action';
+import { setEmail } from '../Redux/action';
 
 const Login = (props) => {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmails] = useState('');
+    const [password, setPasswords] = useState('');
     const [role, setRole] = useState('client');
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Login = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/login-here', { email, password, role, dispatch, setUsername });
+            const response = await axios.post('http://localhost:8000/login-here', { email, password, role, dispatch, setUsername, setPassword, setEmail });
             const { token } = response.data;
             const decodedToken = JSON.parse(atob(token.split('.')[1]));
 
@@ -29,11 +30,13 @@ const Login = (props) => {
             localStorage.setItem('name', decodedToken.name);
             localStorage.setItem('_id', decodedToken.id);
             dispatch(setUsername(response.data.username));
+            dispatch(setPassword(response.data.password));
+            dispatch(setEmail(response.data.email));
             // console.log('username', response.data.username);
 
             if (role === 'client') {
                 alert('Login succesful!');
-                navigate('/profile'); // Redirect to client profile page
+                navigate('/myprofile'); // Redirect to client profile page
             } else if (role === 'therapist') {
                 navigate('/therapist'); // Redirect to therapist page
             } else {
@@ -65,7 +68,7 @@ const Login = (props) => {
                                     id="email"
                                     name="email"
                                     placeholder="name@example.com"
-                                    value={email} onChange={(e) => setEmail(e.target.value)} required />
+                                    value={email} onChange={(e) => setEmails(e.target.value)} required />
                                 <label htmlFor="email">Email address</label>
                             </div>
                             <div className="form-floating mb-3">
@@ -75,7 +78,7 @@ const Login = (props) => {
                                     id="password"
                                     name="password"
                                     placeholder="Password"
-                                    value={password} onChange={(e) => setPassword(e.target.value)} required />
+                                    value={password} onChange={(e) => setPasswords(e.target.value)} required />
                                 <label htmlFor="password">Password</label>
                             </div>
                             <div className="form-floating mb-3">

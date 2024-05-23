@@ -1,6 +1,10 @@
 .text-body-emphasis1 {
     color: #2F3059;
 }
+.text-body-emphasis10 {
+    color: #2F3059;
+    margin-left: -60px;
+}
 .logo {
     width: 150px; /* Smaller width */
     height: auto;

@@ -8,7 +8,7 @@ import diary from '../assets/icons8-diary-90.png'
 import article from '../assets/icons8-article-24.png'
 import logo from '../assets/blue-logo.png'
 // import chat from '../assets/icons8-chat-24.png'
-import '../styles/Sidebar.css';
+import '../styles/Sidebar1.css';
 
 const Sidebar1 = () => {
     const [activeItem, setActiveItem] = useState('home'); // Initial active item
@@ -84,20 +84,6 @@ const Sidebar1 = () => {
                             </a>
                         </li> */}
                     </ul>
-                    <hr />
-                    <div className="dropdown">
-                        <a href="/" className="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2" />
-                            <strong>mdo</strong>
-                        </a>
-                        <ul className="dropdown-menu text-small shadow">
-                            <li><a className="dropdown-item" href="/">New project...</a></li>
-                            <li><a className="dropdown-item" href="/">Settings</a></li>
-                            <li><a className="dropdown-item" href="/">Profile</a></li>
-                            <li><hr className="dropdown-divider" /></li>
-                            <li><a className="dropdown-item" href="/">Sign out</a></li>
-                        </ul>
-                    </div>
                 </div>
             </main >
         </>
