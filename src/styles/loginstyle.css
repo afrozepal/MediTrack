@@ -3,6 +3,11 @@
     color: #2F3059;
     margin-left: -20px;
 }
+.text-body-emphasis11 {
+    color: #2F3059;
+    margin-left: -40px;
+}
+
 .text-body-emphasis2 {
     color: #2F3059;
 }
@@ -37,7 +42,7 @@
     background-position: center;
     background-size: cover;
     height: 600px; 
-    margin-top: 130px;
+    margin-top: 40px;
 }
 .simple-side-image{
     height: 550px;
@@ -55,8 +60,8 @@
 .form-feild-color-login{
     background-color: #BAB2EF;
     border-color: #BAB2EF; 
-    width: 400px;
-}
+    /* width: 350px;*/
+} 
 
 /* .form-control{
     width: 400px;

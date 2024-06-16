@@ -9,10 +9,11 @@ import article from '../assets/icons8-article-24.png'
 import logo from '../assets/blue-logo.png'
 import chat from '../assets/icons8-chat-24.png'
 import '../styles/Sidebar.css';
+import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
     const [activeItem, setActiveItem] = useState('home'); // Initial active item
-
+    const username = useSelector(state => state.username);
     const handleItemClick = (item) => {
         setActiveItem(item);
     };
@@ -21,7 +22,7 @@ const Sidebar = () => {
 
     const handleItemClick2 = (item, e) => {
         e.preventDefault(); // prevent default link behavior
-        const userPassword = '1234'; // replace with the actual user password
+        const userPassword = username; // replace with the actual user password
         if (!passwordPrompted) {
             const passwordPrompt = prompt('Enter password:', '');
             if (passwordPrompt === userPassword) {

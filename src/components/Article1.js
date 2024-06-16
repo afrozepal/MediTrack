@@ -5,10 +5,12 @@ import Sidebar from './Sidebar';
 import searchIcon from '../assets/icons8-search-100.png';
 import withAuth from '../utils/withAuth';
 import '../styles/articles.css';
+import { useSelector } from 'react-redux';
 
 const Article = () => {
     const { id } = useParams();  // Correctly extract the id from the URL parameters
     const [article, setArticle] = useState(null);
+    const username = useSelector(state => state.username);
 
     useEffect(() => {
         const fetchArticle = async () => {
@@ -27,7 +29,7 @@ const Article = () => {
     if (!article) {
         return <div>Loading...</div>;
     }
-    const username = localStorage.getItem('username');
+
     return (
         <>
             <div className="container-fluid">
@@ -36,20 +38,13 @@ const Article = () => {
                         <Sidebar />
                     </div>
                     <div className="col-md-9">
-                        <div className="search-bar d-flex justify-content-center align-items-center">
-                            <input type="text" className="form-control search-input" placeholder="Search..." />
-                            <button className="btndesign btn btn-outline-secondary" type="button">
-                                <img src={searchIcon} alt="Search" width="20" height="20" />
-                            </button>
-                        </div>
-                        <div className="dropdown">
+                        <div className="dropdown-article-view">
                             <a href="/" className="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" className="rounded-circle" />
                             </a>
-                            <p>Welcome {username}</p> {/* Display the username here */}
+                            <p className='username-text'>Welcome {username}</p> {/* Display the username here */}
                             <ul className="dropdown-menu text-small shadow">
                                 <li><a className="dropdown-item" href="/">My Profile</a></li>
-                                <li><a className="dropdown-item" href="/">Settings</a></li>
                                 <li><hr className="dropdown-divider" /></li>
                                 <li><a className="dropdown-item" href="/">Sign out</a></li>
                             </ul>

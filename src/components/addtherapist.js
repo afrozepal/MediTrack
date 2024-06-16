@@ -3,8 +3,9 @@ import axios from 'axios';
 import '../styles/therapist.css';
 import Sidebar1 from '../components/Sidebar1';
 import { useSelector } from 'react-redux';
+import withAuth from '../utils/withAuth';
 
-function Therapist() {
+function Therapist(props) {
   const [therapists, setTherapists] = useState([]);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -12,6 +13,9 @@ function Therapist() {
   const [existingPassword, setExistingPassword] = useState(''); // For existing therapist's password
   const [message, setMessage] = useState('');
   const username = useSelector(state => state.username);
+
+  const { user } = props;
+  const therapistid = user.userId;
 
   const handleAddTherapist = async (e) => {
     e.preventDefault();
@@ -21,10 +25,11 @@ function Therapist() {
       const response = await axios.post('http://localhost:8000/addtherapist', { // Use axios.post instead of fetch
         newTherapist,
         existingTherapistPassword: existingPassword,
+        therapistid,
       });
 
       const data = await response.json();
-
+      alert('New therapist added successfully!');
       if (response.ok) {
         setTherapists([...therapists, newTherapist]);
         setName('');
@@ -32,7 +37,7 @@ function Therapist() {
         setPassword('');
         setExistingPassword('');
         setMessage('New therapist added successfully');
-        alert('New therapist added successfully!');
+
       } else {
         setMessage(data.message);
       }
@@ -125,4 +130,4 @@ function Therapist() {
   );
 }
 
-export default Therapist;
+export default withAuth(Therapist);

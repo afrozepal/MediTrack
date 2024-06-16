@@ -55,16 +55,16 @@ const Login = (props) => {
                     <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
                         <div className="d-flex align-items-center mb-3">
                             <img src={logo1} alt="Logo" className="logo" />
-                            <h1 className="display-4 fw-bold lh-1 text-body-emphasis1">MindMate</h1>
+                            <h1 className="display-4 fw-bold lh-1 text-body-emphasis11">MindMate</h1>
                         </div>
                         <p className="h4 fw text-body-emphasis2 lh-1 mb-3">Welcome back! Please log in to continue.</p>
                     </div>
-                    <div className="form-side col-md-10 mx-auto col-lg-5">
+                    <div className="form-side-login col-md-10 mx-auto col-lg-5">
                         <form className="bg-color p-4 p-md-5 rounded-3" onSubmit={handleSubmit}>
                             <div className="form-floating mb-3">
                                 <input
                                     type="email"
-                                    className="form-field-color form-control"
+                                    className="form-field-color-login form-control"
                                     id="email"
                                     name="email"
                                     placeholder="name@example.com"
@@ -74,7 +74,7 @@ const Login = (props) => {
                             <div className="form-floating mb-3">
                                 <input
                                     type="password"
-                                    className="form-field-color form-control"
+                                    className="form-field-color-login form-control"
                                     id="password"
                                     name="password"
                                     placeholder="Password"
@@ -83,7 +83,7 @@ const Login = (props) => {
                             </div>
                             <div className="form-floating mb-3">
                                 <select
-                                    className="form-field-color form-control"
+                                    className="form-field-color-login form-control"
                                     id="role"
                                     name="role"
                                     value={role} onChange={(e) => setRole(e.target.value)}>

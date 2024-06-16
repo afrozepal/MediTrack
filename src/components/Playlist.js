@@ -13,7 +13,7 @@ const Playlist = () => {
       artist: "Aurora Wave",
       album: "Album 1",
       imageurl: "https://picsum.photos/200/300",
-      linke: "(link unavailable)"
+      linke: "https://www.youtube.com/watch?v=gjuS3CS_9Bw"
     },
     {
       id: 2,
@@ -21,7 +21,7 @@ const Playlist = () => {
       artist: "Luna Nightingale",
       album: "Album 2",
       imageurl: "https://picsum.photos/200/301",
-      linke: "(link unavailable)"
+      linke: "https://www.youtube.com/watch?v=XTCaxna7Mpo"
     },
     {
       id: 3,
@@ -29,7 +29,7 @@ const Playlist = () => {
       artist: "Raven Blackwood",
       album: "Album 3",
       imageurl: "https://picsum.photos/200/302",
-      linke: "(link unavailable)"
+      linke: "https://www.youtube.com/watch?v=79kpoGF8KWU"
     },
     {
       id: 4,
@@ -37,7 +37,7 @@ const Playlist = () => {
       artist: "Solara Flux",
       album: "Album 4",
       imageurl: "https://picsum.photos/200/303",
-      linke: "(link unavailable)"
+      linke: "https://www.youtube.com/watch?v=xm0zT8Sim3c"
     },
     {
       id: 5,
@@ -45,7 +45,7 @@ const Playlist = () => {
       artist: "Kairos Requiem",
       album: "Album 5",
       imageurl: "https://picsum.photos/200/304",
-      linke: "(link unavailable)"
+      linke: "https://www.youtube.com/watch?v=cny0FPLPN_s"
     },
     {
       id: 6,
@@ -53,7 +53,7 @@ const Playlist = () => {
       artist: "Aria Nocturne",
       album: "Album 6",
       imageurl: "https://picsum.photos/200/305",
-      linke: "(link unavailable)"
+      linke: "https://www.youtube.com/watch?v=XwCad_n5HLY"
     },
     {
       id: 7,
@@ -61,7 +61,7 @@ const Playlist = () => {
       artist: "Nova Spire",
       album: "Album 7",
       imageurl: "https://picsum.photos/200/306",
-      linke: "(link unavailable)"
+      linke: "https://www.youtube.com/watch?v=XwCad_n5HLY"
     },
     {
       id: 8,
@@ -69,7 +69,7 @@ const Playlist = () => {
       artist: "Lila Shadow",
       album: "Album 8",
       imageurl: "https://picsum.photos/200/307",
-      linke: "(link unavailable)"
+      linke: "https://www.youtube.com/watch?v=XwCad_n5HLY"
     },
     {
       id: 9,
@@ -77,7 +77,7 @@ const Playlist = () => {
       artist: "Caelum Astrum",
       album: "Album 9",
       imageurl: "https://picsum.photos/200/308",
-      linke: "(link unavailable)"
+      linke: "https://www.youtube.com/watch?v=XwCad_n5HLY"
     }
   ];
   const [searchQuery, setSearchQuery] = useState('');

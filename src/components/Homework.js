@@ -26,10 +26,31 @@ const AddHwt = (props) => {
     }
   };
 
-
   useEffect(() => {
     getquestions();
-  }, []);
+
+    // Establish WebSocket connection
+    const socket = new WebSocket(`ws://localhost:8080/${user.userId}`);
+
+    socket.onmessage = (event) => {
+      const notification = JSON.parse(event.data);
+      if (notification.type === 'homeworkAssigned') {
+        alert(notification.message);
+        // Optionally, you can fetch new questions here
+        getquestions();
+      }
+    };
+
+    // Clean up WebSocket connection when component unmounts
+    return () => socket.close();
+  }, [user.userId]);
+
+
+
+
+  // useEffect(() => {
+  //   getquestions();
+  // }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

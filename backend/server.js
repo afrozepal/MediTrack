@@ -16,6 +16,7 @@ require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const { onHomeworkAssigned } = require('./Websocketserver');
 
 const app = express();
 app.use(bodyParser.json());
@@ -220,6 +221,59 @@ app.post('/forgot-password', async (req, res) => {
     }
 });
 
+// delete account functionality 
+app.delete('/delete-account', async (req, res) => {
+    // Authentication
+    const token = req.header('Authorization');
+    if (!token) return res.status(401).send('Access denied. No token provided.');
+
+    try {
+        // Verify token
+        const decoded = jwt.verify(token, JWT_SECRET);
+        req.user = decoded;
+
+        // Delete user account
+        const userId = req.user._id;
+        await User.findByIdAndDelete(userId);
+        res.status(200).send({ message: 'Account successfully deleted.' });
+    } catch (error) {
+        if (error.name === 'JsonWebTokenError') {
+            res.status(400).send('Invalid token.');
+        } else {
+            res.status(500).send({ message: 'Error deleting account.', error });
+        }
+    }
+});
+
+
+app.delete('/delete-account', async (req, res) => {
+    const token = req.header('Authorization');
+    if (!token) return res.status(401).send('Access denied. No token provided.');
+
+    try {
+        const decoded = jwt.verify(token, JWT_SECRET);
+        req.user = decoded;
+
+        const userId = req.user._id;
+        console.log('Deleting user with ID:', userId); // Debugging
+
+        const user = await User.findByIdAndDelete(userId);
+        if (!user) {
+            return res.status(404).send({ message: 'User not found.' });
+        }
+
+        console.log('User deleted:', user); // Debugging
+        res.status(200).send({ message: 'Account successfully deleted.' });
+    } catch (error) {
+        console.error('Error deleting account:', error); // Debugging
+        if (error.name === 'JsonWebTokenError') {
+            res.status(400).send('Invalid token.');
+        } else {
+            res.status(500).send({ message: 'Error deleting account.', error });
+        }
+    }
+});
+
 
 app.get('/userprofile', async (req, res) => {
     try {
@@ -252,6 +306,36 @@ app.listen(8000, () => {
 
 // THEREPIST SIDE WORKING - UMAIMA 
 //-------------------------------------------------UMAIMA WORK--------------------------------------------------------------
+
+// app.delete('/deleteanswers', async (req, res) => {
+//     try {
+//         const { answerIds } = req.body; // Assuming answer IDs are sent in the request body
+//         const result = await Question.deleteMany({ answerIds })
+//         console.log("DELETEDDDDDDDDDDDDDDDDDDDD"); 
+//         console.log(answerIds); 
+//         res.status(200).json({ message: 'Answers deleted successfully', deletedCount: result.deletedCount });
+//     } catch (error) {
+//         console.error('Error deleting answers:', error);
+//         res.status(500).json({ message: 'Internal server error' });
+//     }
+// });
+
+app.delete('/deleteanswers', async (req, res) => {
+    try {
+        const { answerIds } = req.body; // Assuming userId is sent in the request body
+
+        // Assuming you have a `Question` model with a `userId` field
+        const result = await Question.deleteMany({ userId: answerIds });
+
+        console.log("DELETED QUESTIONS FOR USER:", answerIds);
+        res.status(200).json({ message: 'Questions deleted successfully', deletedCount: result.deletedCount });
+    } catch (error) {
+        console.error('Error deleting questions:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
 
 app.get('/getclients', async (req, res) => {
     try {
@@ -304,6 +388,29 @@ app.post('/addclient', async (req, res) => {
 });
 
 
+// app.post('/addquestions', async (req, res) => {
+//     try {
+//         const { therapistId, userId, questions } = req.body;
+
+//         // Validate questions array
+//         if (!Array.isArray(questions)) {
+//             return res.status(400).json({ message: 'Invalid questions format' });
+//         }
+
+//         // Save each question to the database with the userId
+//         const savedQuestions = await Promise.all(questions.map(async (questionData) => {
+//             const question = new Question({ ...questionData, userId, therapistId });
+//             return await question.save();
+//         }));
+
+//         res.status(201).json(savedQuestions);
+//     } catch (error) {
+//         console.error('Error adding questions:', error);
+//         res.status(500).json({ message: 'Internal server error' });
+//     }
+// });
+
+
 app.post('/addquestions', async (req, res) => {
     try {
         const { therapistId, userId, questions } = req.body;
@@ -319,7 +426,10 @@ app.post('/addquestions', async (req, res) => {
             return await question.save();
         }));
 
+        // Notify the client (user) that new homework has been assigned
+        onHomeworkAssigned(userId, { therapistId, questions });
         res.status(201).json(savedQuestions);
+
     } catch (error) {
         console.error('Error adding questions:', error);
         res.status(500).json({ message: 'Internal server error' });
@@ -413,11 +523,10 @@ app.get('/getanswers/:userId', async (req, res) => {
 
 app.post('/addtherapist', async (req, res) => {
     try {
-        const { newTherapist, existingTherapistPassword } = req.body;
-        const existingTherapistId = '664bcdb139f4e0c0f2f48212'; // Assume the therapist is authenticated and their ID is available in req.user.id
+        const { newTherapist, existingTherapistPassword, therapistid } = req.body;
 
         // Find the existing therapist
-        const existingTherapist = await Therapist.findById(existingTherapistId);
+        const existingTherapist = await Therapist.findById(therapistid);
         if (!existingTherapist) {
             return res.status(401).json({ message: 'Unauthorized' });
         }

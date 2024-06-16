@@ -99,7 +99,7 @@ const Diary = (props) => {
                             <div className="diary-content">
                                 <div className="date-picker">
                                     <h3>Select Date:</h3>
-                                    <input type="date" onChange={(e) => handleDateSelect(e.target.value)} />
+                                    <input type="date" pattern="\d{4}-\d{2}-\d{2}" onChange={(e) => handleDateSelect(e.target.value)} />
                                 </div>
                                 {selectedDate && (
                                     <div className="entry-section">

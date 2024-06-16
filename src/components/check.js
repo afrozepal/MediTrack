@@ -10,6 +10,8 @@ const DisplayAnswers = () => {
   const { userId } = useParams(); // Extract userId from URL parameters
   const username = useSelector(state => state.username);
 
+
+
   useEffect(() => {
     // Fetch the answers when the component mounts
     const fetchAnswers = async () => {
@@ -24,6 +26,18 @@ const DisplayAnswers = () => {
 
     fetchAnswers();
   }, [userId]);
+
+  const handleDelete = async () => {
+    try {
+      const answerIds = userId; // Extract answer IDs
+      const response = await axios.delete('http://localhost:8000/deleteanswers', { data: { answerIds } });
+      setAnswers([]); // Clear the answers from state after deletion
+      alert("Checked!");
+    } catch (error) {
+      console.error('Error deleting answers:', error);
+    }
+  };
+
 
   return (
     <div className="container-fluid">
@@ -63,6 +77,7 @@ const DisplayAnswers = () => {
                 ))}
               </ul>
             )}
+            <button className='btn btn-primary' onClick={handleDelete} >Marked As Checked</button>
           </div>
 
         </div>

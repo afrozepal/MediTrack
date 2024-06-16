@@ -44,17 +44,21 @@
     font-weight: bold;
     color:#2F3059; 
     font-size: 40px; 
+    margin-left: 100px;
+    margin-top: 250px; 
 }
 .article-body{
     color:#2F3059; 
     font-size: 18px;
     align-items: center;
+    margin-top: 60px;
 }
 .article-subheadings{
     color:#2F3059; 
-    font-size: 18px;
+    font-size: 18px; 
     font-weight: bold;
     align-items: center;
+    margin-left: 10px;
 }
 
 .article-image{
@@ -66,4 +70,8 @@
     margin-bottom: 60px;
     margin-top: -35px;
     border-radius: 10px; 
+}
+.dropdown-article-view{
+    margin-left: 900px; 
+    margin-top: 30px;
 }

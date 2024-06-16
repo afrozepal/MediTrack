@@ -2,6 +2,11 @@
 .text-body-emphasis1 {
     color: #2F3059;
 }
+.text-body-emphasis13 {
+    color: #2F3059;
+    margin-left: -50px; 
+}
+
 .logo {
     width: 150px; /* Smaller width */
     height: auto;
@@ -32,7 +37,7 @@
     background-position: center;
     background-size: cover;
     height: 600px; 
-    margin-top: 130px;
+    margin-top: 40px;
 }
 .simple-side-image{
     height: 550px;

@@ -3,7 +3,7 @@
 }
 .text-body-emphasis10 {
     color: #2F3059;
-    margin-left: -60px;
+    margin-left: -50px;
 }
 .logo {
     width: 150px; /* Smaller width */
@@ -31,7 +31,7 @@
     background-position: center;
     background-size: cover;
     height: 550px; 
-    margin-top: 120px;
+    margin-top: 40px;
 }
 .simple-side-image{
     height: 550px;

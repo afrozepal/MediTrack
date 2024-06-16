@@ -15,6 +15,22 @@ const Profile2 = (props) => {
     // const password = useSelector(state => state.password);
     // const email = useSelector(state => state.email);
 
+    const handleDeleteAccount = async () => {
+        if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+            try {
+                await axios.delete('http://localhost:8000/delete-account', {
+                    headers: {
+                        Authorization: localStorage.getItem('token')
+                    }
+                });
+                alert('Account successfully deleted.');
+                // Optionally, log out the user and redirect
+            } catch (error) {
+                alert('Error deleting account.');
+            }
+        }
+    };
+
     return (
         <div className="profile-page">
             <Sidebar />
@@ -40,6 +56,7 @@ const Profile2 = (props) => {
                         <h2 className='text-body-emphasis3'> Username: {username}</h2>
                         <p className='text-body-emphasis4 lead'>ID: {user.userId}</p>
                     </div>
+                    <button onClick={handleDeleteAccount}>Delete Account</button>
                 </div>
             </div>
         </div>

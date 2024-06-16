@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import ContactUsSection from './ContactUsSection';
 import logo from '../assets/blue-logo.png';
 import girl from '../assets/yoga-girl-white.png';
+// import umaima from '../assets/umaima.jpg';
 import '../styles/Homepage.css';
 import TeamSection from './Team';
 

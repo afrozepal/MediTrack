@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -12,6 +12,21 @@ const AddQuestion = () => {
   const [questions, setQuestions] = useState([{ type: 'scale', text: '' }]);
   const { userId } = useParams(); // Extract userId from URL parameters
   const username = useSelector(state => state.username);
+
+  // NOTIFICATION FUNCTIONALITY 
+  useEffect(() => {
+    const socket = new WebSocket(`ws://localhost:8080/${userId}`);
+
+    socket.onmessage = (event) => {
+      const notification = JSON.parse(event.data);
+      if (notification.type === 'homeworkAssigned') {
+        alert(notification.message);
+      }
+    };
+
+    return () => socket.close();
+  }, [userId]);
+
 
   const handleQuestionTypeChange = (index, newType) => {
     const updatedQuestions = questions.map((question, idx) =>
