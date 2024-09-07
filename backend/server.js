@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('./mongo');
 const jwt = require('jsonwebtoken');
 const Therapist = require('../backend/models/therapist');
+const Admin = require('../backend/models/admin'); 
 const client = require('../backend/models/clientrel');
 const Question = require('../backend/models/questions')
 const User = require('../backend/models/model');
@@ -146,6 +147,26 @@ app.get('/getarticles', async (req, res) => {
 
 // SIGNUP - LOGIN IS HEREEEEEEEEEEEEEEEE
 // Signup Route
+// app.post('/signup-here', async (req, res) => {
+//     const { name, email, password, role } = req.body;
+//     try {
+//         let user;
+//         if (role === 'client') {
+//             user = new User({ name, email, password });
+//         } else if (role === 'therapist') {
+//             user = new Therapist({ name, email, password });
+//         } else {
+//             return res.status(400).json({ message: 'Invalid role' });
+//         }
+//         await user.save();
+//         res.status(201).json({ message: 'User created successfully', role });
+//         sendEmail(email, 'Successful Signup', 'You have successfully signed up!');
+//     } catch (error) {
+//         console.error('Error creating user', error);
+//         res.status(500).json({ message: 'Error creating user', error });
+//     }
+// });
+
 app.post('/signup-here', async (req, res) => {
     const { name, email, password, role } = req.body;
     try {
@@ -166,33 +187,80 @@ app.post('/signup-here', async (req, res) => {
     }
 });
 
+
 // Login Route
+// app.post('/login-here', async (req, res) => {
+//     const { email, password, role } = req.body;
+
+//     try {
+//         let user;
+//         if (role === 'client') {
+//             user = await User.findOne({ email });
+//         } else if (role === 'therapist') {
+//             user = await Therapist.findOne({ email });
+//         } else {
+//             return res.status(400).json({ message: 'Invalid role' });
+//         }
+
+//         if (!user || !(await user.comparePassword(password))) {
+//             return res.status(400).json({ message: 'Invalid credentials' });
+//         }
+//         const username = user.name;
+//         const useremail = user.email;
+//         const userpass = user.password;
+//         const token = jwt.sign({ id: user._id, role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+//         res.json({ token, role, username, useremail, userpass });
+//     } catch (error) {
+//         console.error('Error logging in', error);
+//         res.status(500).json({ message: 'Error logging in', error });
+//     }
+// });
+
 app.post('/login-here', async (req, res) => {
     const { email, password, role } = req.body;
 
     try {
         let user;
+
+        // Check for different roles
         if (role === 'client') {
             user = await User.findOne({ email });
         } else if (role === 'therapist') {
             user = await Therapist.findOne({ email });
+        } else if (role === 'admin') {
+            user = await Admin.findOne({ email });
         } else {
             return res.status(400).json({ message: 'Invalid role' });
         }
 
+        // Check if user exists and password is correct
         if (!user || !(await user.comparePassword(password))) {
             return res.status(400).json({ message: 'Invalid credentials' });
         }
-        const username = user.name;
-        const useremail = user.email;
-        const userpass = user.password;
+
+        // Check if admin login and the user is actually an admin
+        if (role === 'admin' && !user.isAdminUser()) {
+            return res.status(403).json({ message: 'Not authorized as admin' });
+        }
+
+        // Generate JWT token
         const token = jwt.sign({ id: user._id, role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token, role, username, useremail, userpass });
+
+        // Send user information and token in response
+        res.json({
+            token,
+            role,
+            username: user.name,
+            useremail: user.email,
+            userpass: user.password
+        });
+
     } catch (error) {
         console.error('Error logging in', error);
         res.status(500).json({ message: 'Error logging in', error });
     }
 });
+
 
 
 // Forgot Password

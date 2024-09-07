@@ -9,12 +9,9 @@ import withAuth from '../utils/withAuth';
 const Profile2 = (props) => {
     const { user } = props;
     const location = useLocation();
-    // const [users, setUser] = useState({});
     const [profilePic, setProfilePic] = useState('https://picsum.photos/200/300');
     const username = useSelector(state => state.username);
-    // const password = useSelector(state => state.password);
-    // const email = useSelector(state => state.email);
-
+   
     const handleDeleteAccount = async () => {
         if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
             try {
@@ -46,17 +43,18 @@ const Profile2 = (props) => {
                         <li><a className="dropdown-item" href="/">Sign out</a></li>
                     </ul>
                 </div>
+                <button className="change-pic-btn">Change Picture</button>
                 <div className="profile-container">
                     <div className="profile-pic-container">
                         <img src={profilePic} alt="Profile Picture" className="profile-pic" />
-                        <button className="change-pic-btn">Change Picture</button>
                     </div>
                     <div className="profile-info">
                         {/* <h1>User Profile</h1> */}
-                        <h2 className='text-body-emphasis3'> Username: {username}</h2>
-                        <p className='text-body-emphasis4 lead'>ID: {user.userId}</p>
+                        <h2 className='text-body-emphasis3'> Hey {username}</h2>
+                        <p className='text-body-emphasis4 lead'>Your Id: {user.userId}</p>
+                        <p className='text-body-emphasis5 lead'>Your Id and name will appear here. You can navigate all the options for better understanding of this plattform. Hope you enjoy your stay!</p>
                     </div>
-                    <button onClick={handleDeleteAccount}>Delete Account</button>
+                    <button className='deleteBtn' onClick={handleDeleteAccount}>Delete Account</button>
                 </div>
             </div>
         </div>

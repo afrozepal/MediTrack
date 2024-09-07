@@ -6,39 +6,41 @@ import Footer from '../components/Footer';
 import logo1 from '../assets/blue-logo.png';
 import '../styles/loginstyle.css';
 import { useDispatch } from 'react-redux';
-import { setUsername } from '../Redux/action';
-import { setPassword } from '../Redux/action';
-import { setEmail } from '../Redux/action';
+import { setUsername, setPassword, setEmail } from '../Redux/action';
 
-const Login = (props) => {
+const Login = () => {
 
     const [email, setEmails] = useState('');
     const [password, setPasswords] = useState('');
-    const [role, setRole] = useState('client');
+    const [role, setRole] = useState('client'); // Default role is set to 'client'
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/login-here', { email, password, role, dispatch, setUsername, setPassword, setEmail });
+            const response = await axios.post('http://localhost:8000/login-here', { email, password, role });
             const { token } = response.data;
             const decodedToken = JSON.parse(atob(token.split('.')[1]));
 
+            // Store token and user data in local storage
             localStorage.setItem('token', token);
             localStorage.setItem('name', decodedToken.name);
             localStorage.setItem('_id', decodedToken.id);
+            
+            // Dispatch username, password, and email to Redux store
             dispatch(setUsername(response.data.username));
             dispatch(setPassword(response.data.password));
             dispatch(setEmail(response.data.email));
-            // console.log('username', response.data.username);
 
+            // Redirect based on role
             if (role === 'client') {
-                alert('Login succesful!');
+                alert('Login successful!');
                 navigate('/myprofile'); // Redirect to client profile page
             } else if (role === 'therapist') {
                 navigate('/therapist'); // Redirect to therapist page
+            } else if (role === 'admin') {
+                navigate('/admin'); // Redirect to admin dashboard
             } else {
                 console.error('Invalid role received from server');
             }
@@ -47,6 +49,7 @@ const Login = (props) => {
             alert('Invalid Credentials!');
         }
     };
+
     return (
         <>
             <Navbar />
@@ -68,7 +71,10 @@ const Login = (props) => {
                                     id="email"
                                     name="email"
                                     placeholder="name@example.com"
-                                    value={email} onChange={(e) => setEmails(e.target.value)} required />
+                                    value={email}
+                                    onChange={(e) => setEmails(e.target.value)}
+                                    required
+                                />
                                 <label htmlFor="email">Email address</label>
                             </div>
                             <div className="form-floating mb-3">
@@ -78,7 +84,10 @@ const Login = (props) => {
                                     id="password"
                                     name="password"
                                     placeholder="Password"
-                                    value={password} onChange={(e) => setPasswords(e.target.value)} required />
+                                    value={password}
+                                    onChange={(e) => setPasswords(e.target.value)}
+                                    required
+                                />
                                 <label htmlFor="password">Password</label>
                             </div>
                             <div className="form-floating mb-3">
@@ -86,18 +95,23 @@ const Login = (props) => {
                                     className="form-field-color-login form-control"
                                     id="role"
                                     name="role"
-                                    value={role} onChange={(e) => setRole(e.target.value)}>
-
+                                    value={role}
+                                    onChange={(e) => setRole(e.target.value)}
+                                >
                                     <option value="client">Client</option>
                                     <option value="therapist">Therapist</option>
+                                    <option value="admin">Admin</option> {/* Corrected Admin option */}
                                 </select>
                                 <label htmlFor="role">Role</label>
                             </div>
-                            {/* {loginError && <div className="alert alert-danger">Invalid credentials. Please try again.</div>} */}
                             <button className="btn btn-custom-login w-100 btn-lg" type="submit">Log In</button>
                             <hr className="my-4" />
-                            <small className="text-login lead">Don't have an account? <Link to="/signup">Sign up</Link></small>
-                            <p className="text-login lead">Forgot your password? <Link to="/forgotpass">Reset it here</Link></p>
+                            <small className="text-login lead">
+                                Don't have an account? <Link to="/signup">Sign up</Link>
+                            </small>
+                            <p className="text-login lead">
+                                Forgot your password? <Link to="/forgotpass">Reset it here</Link>
+                            </p>
                         </form>
                     </div>
                 </div>

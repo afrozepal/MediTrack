@@ -13,11 +13,24 @@ const SignUp = () => {
     const [role, setRole] = useState('client');
     const navigate = useNavigate();
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const response = await axios.post('http://localhost:8000/signup-here', { name, email, password, role });
+    //         alert("Signup Successfull!");
+    //         if (response.data.message === 'User created successfully') {
+    //             navigate('/login');
+    //         }
+    //     } catch (error) {
+    //         console.error('Error signing up', error.response ? error.response.data : error.message);
+    //     }
+    // };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.post('http://localhost:8000/signup-here', { name, email, password, role });
-            alert("Signup Successfull!");
+            alert("Signup Successful!");
             if (response.data.message === 'User created successfully') {
                 navigate('/login');
             }
@@ -25,6 +38,7 @@ const SignUp = () => {
             console.error('Error signing up', error.response ? error.response.data : error.message);
         }
     };
+    
 
     return (
         <>
