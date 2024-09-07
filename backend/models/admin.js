@@ -18,11 +18,11 @@ const adminSchema = new mongoose.Schema({
     },
     isAdmin: {
         type: Boolean,
-        default: true // Ensure the default is set for admins
+        default: true // Ensure default admin status
     }
 });
 
-// Hash the password before saving the admin document
+// Hash the password before saving
 adminSchema.pre('save', async function (next) {
     if (!this.isModified('password')) {
         return next();
@@ -31,7 +31,7 @@ adminSchema.pre('save', async function (next) {
     next();
 });
 
-// Method to compare the entered password with the stored hashed password
+// Method to compare entered password with the hashed password in the database
 adminSchema.methods.comparePassword = function (password) {
     return bcrypt.compare(password, this.password);
 };

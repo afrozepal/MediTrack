@@ -48,7 +48,7 @@ const Navbar = () => {
             <div className="container-fluid">
                 <a className="text-heading navbar-brand fw-bold" href="#home">
                     <img src={logo} alt="Logo" width="40" height="40" className="d-inline-block align-text-top" />
-                    MindMate
+                    MediTrack
                 </a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

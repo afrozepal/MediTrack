@@ -48,7 +48,7 @@ const SignUp = () => {
                     <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
                         <div className="d-flex align-items-center mb-3">
                             <img src={logo1} alt="Logo" className="logo" />
-                            <h1 className="display-4 fw-bold lh-1 text-body-emphasis12">MindMate</h1>
+                            <h1 className="display-4 fw-bold lh-1 text-body-emphasis12">MediTrack</h1>
                         </div>
                         <p className="h4 fw text-body-emphasis2 lh-1 mb-3">Embracing growth, one step at a time.</p>
                         <p className="text-body-emphasis2 lead">No account yet? Sign up now to get access to exclusive features and content. If you already have an account, please log in to continue.</p>

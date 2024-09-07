@@ -10,7 +10,7 @@ import logo from '../assets/blue-logo.png'
 // import chat from '../assets/icons8-chat-24.png'
 import '../styles/Sidebar1.css';
 
-const Sidebar1 = () => {
+const Sidebar2 = () => {
     const [activeItem, setActiveItem] = useState('home'); // Initial active item
 
     const handleItemClick = (item) => {
@@ -28,21 +28,21 @@ const Sidebar1 = () => {
                     <ul className="nav nav-pills flex-column mb-auto">
 
                         <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
-                            <a href="/therapist" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
+                            <a href="/" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={hw} alt="" />
-                                <span className='ms-2 d-sm-inline'>Home</span>
+                                <span className='ms-2 d-sm-inline'>Admin Portal</span>
                             </a>
                         </li>
                         <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 rounded ${activeItem === 'home' ? 'active' : ''}`}>
-                            <a href="/addclient" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
+                            <a href="/patients" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={home} alt="" />
-                                <span className='option-color ms-2 d-sm-inline'>Add Client</span>
+                                <span className='option-color ms-2 d-sm-inline'>Patients</span>
                             </a>
                         </li>
                         <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
-                            <a href="/removeclient" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
+                            <a href="/doctors" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={article} alt="" />
-                                <span className='option-color ms-2 d-sm-inline'>Remove Client</span>
+                                <span className='option-color ms-2 d-sm-inline'>Doctors</span>
                             </a>
                         </li>
                         <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
@@ -90,4 +90,4 @@ const Sidebar1 = () => {
     );
 };
 
-export default Sidebar1;
+export default Sidebar2;

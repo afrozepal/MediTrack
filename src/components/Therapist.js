@@ -76,11 +76,7 @@ function TherapistProfile(props) {
                     <h2 className='Articles-heading'>Therapist Profile</h2>
                     <div className='desc-profile'>Here you can find all your clients.</div>
 
-                    {/* <div className="d-flex justify-content-center mb-4">
-                            <Link to="/schedule" className="btn btn-primary me-2">Schedule</Link>
-                            <Link to="/chat" className="btn btn-primary me-2">Chat</Link>
-                            <Link to="/billing" className="btn btn-primary">Billing</Link>
-                        </div> */}
+        
                     <div className='<div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3' >
                         {filteredClients.map(client => (
                             <div key={client._id}>

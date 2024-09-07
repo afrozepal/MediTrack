@@ -21,10 +21,10 @@ const HomePage = ({ setLoginVisible, setSignUpVisible }) => {
                         <div className="d-flex align-items-center mb-3">
                             {/* <!-- <img src="./M-logo.png" alt="Logo" className="logo"> --> */}
                             <img src={logo} alt="Logo" className="logo" />
-                            <h1 className="display-4 fw-bold lh-1 text-body-emphasis10">MindMate</h1>
+                            <h1 className="display-4 fw-bold lh-1 text-body-emphasis10">MediTrack</h1>
                         </div>
-                        <p className="h4 fw text-body-emphasis2 lh-1 mb-3">Embracing growth, one step at a time.</p>
-                        <p className="text-body-emphasis2 lead">Empowering minds, transforming lives. MindMate is your partner in mental wellness, fostering resilience and flourishing communities through compassion and innovation.</p>
+                        <p className="h4 fw text-body-emphasis2 lh-1 mb-3"> Streamlining healthcare one patient at a time.</p>
+                        <p className="text-body-emphasis2 lead">Empowering minds, transforming lives. MediTrack is your partner in mental wellness, fostering resilience and flourishing communities through compassion and innovation.</p>
                         <div className="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                             <Link to="/login" className="btn btn-custom btn-lg px-4 me-sm-3 fw-bold">Login</Link>
                             <Link to="/signup" className="btn btn-custom btn-lg px-4 me-sm-3 fw-bold">Sign Up</Link>
@@ -40,7 +40,7 @@ const HomePage = ({ setLoginVisible, setSignUpVisible }) => {
             <section id="about" className="section">
                 <div className="container">
                     <h2 className="about-heading pb-2">About</h2>
-                    <p className='para-text lead'>Welcome to MindMate, your trusted partner in mental health and well-being. At MindMate, we understand the importance of mental wellness in living a fulfilling life. Our mission is to provide comprehensive and compassionate care to individuals seeking support for their mental health concerns. Whether you're facing challenges like anxiety, depression, stress, or simply need guidance in navigating life's complexities, our team of experienced therapists, counselors, and psychiatrists are here to help. We offer a range of services including therapy sessions tailored to your unique needs, online assessments to assess your mental health status, and expert psychiatric consultations for evaluation and medication management. Our goal is to empower you on your journey to mental wellness, providing you with the tools, support, and resources you need to thrive. Take the first step towards a healthier mind with MindMate.</p>
+                    <p className='para-text lead'>Welcome to MediTrack, your trusted partner in health and well-being. At MediTrack, we understand the importance of mental wellness in living a fulfilling life. Our mission is to provide comprehensive and compassionate care to individuals seeking support for their mental health concerns. Whether you're facing challenges like anxiety, depression, stress, or simply need guidance in navigating life's complexities, our team of experienced therapists, counselors, and psychiatrists are here to help. We offer a range of services including therapy sessions tailored to your unique needs, online assessments to assess your mental health status, and expert psychiatric consultations for evaluation and medication management. Our goal is to empower you on your journey to mental wellness, providing you with the tools, support, and resources you need to thrive. Take the first step towards a healthier mind with MindMate.</p>
                 </div>
             </section>
             <ServicesSection />

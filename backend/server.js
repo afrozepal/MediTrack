@@ -19,7 +19,7 @@ const bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const { onHomeworkAssigned } = require('./Websocketserver');
-// import {imgpath} from '../src/assets/Mindmate.png';
+const Appointment = require('../backend/models/appointments');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors({ origin: true, credentials: true }));
@@ -217,6 +217,7 @@ app.post('/signup-here', async (req, res) => {
 //     }
 // });
 
+
 app.post('/login-here', async (req, res) => {
     const { email, password, role } = req.body;
 
@@ -263,6 +264,32 @@ app.post('/login-here', async (req, res) => {
 });
 
 
+// this route fetches all therapists from the database 
+app.get('/gettherapists', async (req, res) => {
+    try {
+        // Fetch all therapists
+        const therapists = await Therapist.find(); // Replace with your actual model
+        
+        res.json(therapists);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+// this route is defined to fetch all patients data of appointments from the database 
+app.get('/appointments/:userId', async (req, res) => {
+    try {
+      const appointments = await Appointment.find({ userId: req.params.userId }).populate('doctorId');
+      if (appointments.length === 0) {
+        return res.status(404).json({ message: 'No appointments found for this user.' });
+      }
+      res.status(200).json(appointments);
+    } catch (error) {
+      res.status(500).json({ message: 'Error fetching appointments.', error });
+    }
+  }); 
+
 
 // Forgot Password
 app.post('/forgot-password', async (req, res) => {
@@ -276,7 +303,6 @@ app.post('/forgot-password', async (req, res) => {
         } else {
             return res.status(400).json({ message: 'Invalid role' });
         }
-
         if (!user) {
             return res.status(400).json({ message: 'User not found' });
         }
@@ -384,21 +410,6 @@ app.listen(8000, () => {
     console.log("Server listening on port 8000");
 });
 
-// THEREPIST SIDE WORKING - UMAIMA 
-//-------------------------------------------------UMAIMA WORK--------------------------------------------------------------
-
-// app.delete('/deleteanswers', async (req, res) => {
-//     try {
-//         const { answerIds } = req.body; // Assuming answer IDs are sent in the request body
-//         const result = await Question.deleteMany({ answerIds })
-//         console.log("DELETEDDDDDDDDDDDDDDDDDDDD"); 
-//         console.log(answerIds); 
-//         res.status(200).json({ message: 'Answers deleted successfully', deletedCount: result.deletedCount });
-//     } catch (error) {
-//         console.error('Error deleting answers:', error);
-//         res.status(500).json({ message: 'Internal server error' });
-//     }
-// });
 
 app.delete('/deleteanswers', async (req, res) => {
     try {
@@ -420,7 +431,7 @@ app.delete('/deleteanswers', async (req, res) => {
 app.get('/getclients', async (req, res) => {
     try {
         const therapistId1 = req.query.therapistId;
-        console.log("therapistId:", therapistId1);
+        // console.log("therapistId:", therapistId1);
 
         // Find all clients associated with the therapistId
         const clients = await client.find({ therapistId: therapistId1 });
@@ -878,5 +889,23 @@ app.put('/changeslot/:appointmentId', async (req, res) => {
     } catch (error) {
         console.error('Error changing slot:', error);
         res.status(500).json({ message: 'Error changing slot' });
+    }
+});
+
+
+// DEVATHON FUNCTIONALITIES
+
+// Route to get all appointments for a client 
+app.get('/appointments/client/:clientId', async (req, res) => {
+    try {
+        const clientId = req.params.clientId;
+        const appointments = await Appointment.find({ userId: clientId }).populate('doctorId');
+        if (appointments.length === 0) {
+            return res.status(404).json({ message: 'No appointments found for this client.' });
+        }
+        res.status(200).json(appointments);
+    } catch (error) {
+        console.error('Error fetching appointments:', error);
+        res.status(500).json({ message: 'Error fetching appointments.', error });
     }
 });

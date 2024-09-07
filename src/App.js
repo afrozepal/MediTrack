@@ -20,6 +20,12 @@ import Therapist from '../src/components/addtherapist';
 import DisplayAnswers from '../src/components/check';
 import Appointment from './Pages/Appointment';
 import History from './Pages/History';
+import Admin from "./components/Admin";
+import Patients from "../src/Pages/showpatients";
+import Doctors from "../src/Pages/showdoctors";
+import PatientDetails from "../src/Pages/showpatientdetails";
+import DoctorDetails from "../src/Pages/doctordetails";
+
 
 const App = () => {
     return (
@@ -46,10 +52,12 @@ const App = () => {
                     <Route path="/client-count" element={< TherapistClients />} />
                     <Route path="/add-therapist" element={< Therapist />} />
                     <Route path="/appointment-history" element={< History />} />
+                      <Route path="/admin" element={<Admin />} />
+                      <Route path="/patients" element={<Patients />} />
+                      <Route path="/patients/:userId" element={<PatientDetails />} />
+                      <Route path="/doctors" element={<Doctors />} />
+                      <Route path="/doctors/:doctorId" element={<DoctorDetails />} />
                 </Routes>
             </div>
         </Router>
     );
-};
-
-export default App;
