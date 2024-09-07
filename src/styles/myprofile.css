@@ -1,0 +1,95 @@
+.profile-page {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  padding: 20px;
+  margin-left: -20px;
+  margin-top: -20px;
+}
+
+.profile-container {
+  height: 300px;
+  width: 650px;
+  background-color: #bab2efc9;
+  margin-left: 70px;
+  border-top-left-radius: 90px;
+  border-bottom-right-radius: 90px;
+}
+
+.profile-pic-container {
+  width: 200px;
+  height: 250px;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid white;
+  border-width: 6px;
+  margin-top: 80px;
+  margin-left: 50px;
+}
+
+.change-pic-btn {
+  height: 44px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #2F3059;
+  margin-left: 520px;
+  margin-top: 60px;
+}
+
+.profile-info {
+  margin-top: -150px;
+  margin-left: 220px;
+}
+
+.profile-info h2 {
+  margin-top: 0;
+}
+
+.profile-info p {
+  margin-bottom: 10px;
+}
+
+.text-body-emphasis3 {
+  color: #2F3059;
+  font-weight: bold;
+}
+
+.text-body-emphasis4 {
+  color: #2F3059;
+  font-weight: 400;
+}
+.text-body-emphasis5 {
+  color: #2F3059;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.desc-profile {
+  width: 700px;
+  /*height: 60px;  */
+  background-color: #ffd1dc;
+  border-color: #ffd1dc;
+  color: #2f3059;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+}
+
+.dropdown-myhome {
+  margin-left: 900px;
+  margin-top: 30px;
+}
+
+.deleteBtn{
+  height: 44px;
+  width: 200px;
+  border-radius: 10px;
+  background-color: #2F3059;
+  margin-top: 50px;
+}

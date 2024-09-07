@@ -1,0 +1,78 @@
+.search-bar1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffff;
+    padding: 10px;
+    width: 800px;
+}
+
+.search-input {
+    width: 900px;
+    background-color: #bab2efdc;
+    margin-right: 10px;
+    height: 40px;
+    border-radius: 7px;
+    border-color: #bab2efdc;
+    color: white; 
+    margin-right: 20px;
+}
+
+.btndesign{
+    background-color: #bab2efdc;
+    border-color: #bab2efdc;
+    width: 42px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.btndesign:hover{
+    background-color: #2F3059;
+}
+.card-body{
+    background-color: #2F3059;
+    color:#ffff;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.card-design{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.card{
+    border-radius: 20px;
+}
+.btn-group{
+    background-color: #bab2efdc;
+    border-radius: 20px;
+}
+.btn-outline-secondary{
+    color:#ffff; 
+}
+.text-body-secondary1{
+    color:#ffff; 
+}
+.card-img-top{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.card-text-heading{
+    font-weight: bold;
+    color: #ffff; 
+}
+.Articles-heading{
+    font-weight: bold;
+    color:#2F3059;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+.username-text{
+    font-weight: 700;
+    color:#2F3059;
+    margin-top: -30px;
+    margin-left: -200px;
+    font-size: 20px;
+}
+.dropdown-profile{
+    margin-left: 950px;
+    margin-top: -50px;
+}

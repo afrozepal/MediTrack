@@ -1,0 +1,80 @@
+/* loginstyle.css file */
+.text-body-emphasis1 {
+    color: #2F3059;
+    margin-left: -100px;
+}
+
+.text-body-emphasis12 {
+    color: #2F3059;
+    margin-left: -50px;
+}
+.text-body-emphasis2 {
+    color: #2F3059;
+}
+.logo {
+    width: 150px; /* Smaller width */
+    height: auto;
+    margin-left: -25px;
+    margin-bottom: -50px;
+}
+/* Button colors */
+.btn-custom-signup {
+    background-color: #BAB2EF; 
+    border-color: #BAB2EF; 
+    color: #2F3059; /* White text color */
+}
+
+.btn-custom-signup:hover {
+    background-color:#2F3059;
+    border-color: #2F3059; 
+    color: #fff; 
+}
+
+/* background image of Box  */
+.bg-image-sign{
+    background-image: url('../assets/bg-img-real.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 700px; 
+    margin-top: 40px;
+}
+.simple-side-image{
+    height: 550px;
+    width: 400px;
+    margin-top: -120px;
+}
+.form-side{
+    margin-left: -200px;
+}
+.form-color {
+    background-color: #2F3059;
+    color: #2F3059; /* White text color for contrast */
+}
+.form-feild-color-signup{
+    background-color: #BAB2EF;
+    border-color: #BAB2EF; 
+}
+.bg-color{
+    background-color:  #404179d0;
+    border: #404179d0; 
+}
+.remember-me-text{
+    color: white; 
+}
+.text-color{
+    color: white; 
+}
+.separation-color{
+    color: white; 
+}
+.form-control {
+    width: 350px;
+    background-color: #bab2efdc;
+}
+.form-floating{
+    width: 350px;
+}
+.text-signup{
+    color: white; 
+}

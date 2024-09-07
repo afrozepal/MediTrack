@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+/* Applying Custom Font to Diary Title */
+.diary-title {
+  text-align: center;
+  color: #7e57c2; /* Purple text color */
+  font-family: 'Sacramento', cursive;
+}
+
+.diary-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: -200px; 
+    margin-left: -550px; 
+    width: 2000px;
+}
+
+.diary-content {
+  background-color: #BAB2EF; 
+  border: 1px solid white;
+  width: 50%;
+  max-width: 900px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Box shadow for depth */
+}
+
+  .date-picker {
+    margin-bottom: 20px;
+  }
+  
+  .entry-section {
+    margin-bottom: 20px;
+  }
+  
+  .diary-entries {
+    border-top: 2px solid #ccc;
+    padding-top: 20px;
+  }
+  
+  .entry-item {
+    margin-bottom: 20px;
+    background-color: #f3e5f5; /* Light purple background color for diary entries */
+    padding: 10px;
+    border: 1px solid white;
+    border-radius: 8px;
+  }
+  
+  textarea, input[type="date"], button {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #9043a3;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #7346c0; /* Purple button color */
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #9043a3; /* Darker purple on hover */
+  }

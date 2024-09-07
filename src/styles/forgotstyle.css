@@ -1,0 +1,79 @@
+/* loginstyle.css file */
+.text-body-emphasis1 {
+    color: #2F3059;
+}
+.text-body-emphasis13 {
+    color: #2F3059;
+    margin-left: -50px; 
+}
+
+.logo {
+    width: 150px; /* Smaller width */
+    height: auto;
+    margin-left: -25px;
+    margin-bottom: -50px;
+}
+/* Button colors */
+.btn-custom-forgot {
+    background-color: #BAB2EF; 
+    border-color: #BAB2EF; 
+    color: #2F3059; /* White text color */
+}
+
+.btn-custom-forgot:hover {
+    background-color:#2F3059;
+    border-color: #2F3059; 
+    color: #fff; 
+}
+/* outer background image */
+/* .back-image{
+    background-image: url('../assets/purple-nature.png');
+} */
+
+/* background image of Box  */
+.bg-image-forgot{
+    background-image: url('../assets/bg-img-real.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 600px; 
+    margin-top: 40px;
+}
+.simple-side-image{
+    height: 550px;
+    width: 400px;
+    margin-top: -120px;
+}
+.form-side-forgot{
+    margin-left: -100px;
+    width: 450px;
+}
+.form-color {
+    width: 420px;
+    background-color: #2F3059;
+    color: #2F3059; /* White text color for contrast */
+}
+.form-feild-color-forgot{
+    background-color: #BAB2EF;
+    border-color: #BAB2EF; 
+    width: 400px;
+}
+
+.bg-color-forgot{
+    background-color:  #404179d0;
+    border: #404179d0; 
+    width: 500px;
+    margin-left: -100px;
+}
+.remember-me-text{
+    color: white; 
+}
+.text-color{
+    color: white; 
+}
+.separation-color{
+    color: white; 
+}
+.form-floating{
+    width: 500px;
+}

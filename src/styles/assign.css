@@ -1,0 +1,36 @@
+.dropdown-assign{
+    margin-left: 900px;
+    margin-top: 30px;
+}
+
+
+/* CSS FOR CHECK  */
+.container {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  h2 {
+    color: #343a40;
+  }
+  
+  .list-group-item {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .list-group-item p {
+    color: #495057;
+  }
+  
+  .alert {
+    font-size: 1.1rem;
+  }
+  
+  strong {
+    color: #007bff;
+  }
+  
