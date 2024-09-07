@@ -20,28 +20,28 @@ function Therapist(props) {
   const handleAddTherapist = async (e) => {
     e.preventDefault();
 
-    const newTherapist = { username: name, email, password };
+    const newTherapist = { name, email, password };
+
     try {
-      const response = await axios.post('http://localhost:8000/addtherapist', { // Use axios.post instead of fetch
+      const response = await axios.post('http://localhost:8000/addtherapist', {
         newTherapist,
         existingTherapistPassword: existingPassword,
         therapistid,
       });
 
-      const data = await response.json();
-      alert('New therapist added successfully!');
-      if (response.ok) {
+      if (response.status === 200) {
+        alert('New therapist added successfully!');
         setTherapists([...therapists, newTherapist]);
         setName('');
         setEmail('');
         setPassword('');
         setExistingPassword('');
         setMessage('New therapist added successfully');
-
       } else {
-        setMessage(data.message);
+        setMessage(response.data.message);
       }
     } catch (error) {
+      console.error('Error adding therapist:', error);
       setMessage('An error occurred. Please try again.');
       alert('Error Adding Therapist!');
     }
@@ -61,14 +61,13 @@ function Therapist(props) {
             <p className='username-text'>Welcome {username}</p>
             <ul className="dropdown-menu text-small shadow">
               <li><a className="dropdown-item" href="/">My Profile</a></li>
-              {/* <li><a className="dropdown-item" href="/">Settings</a></li> */}
               <li><hr className="dropdown-divider" /></li>
               <li><a className="dropdown-item" href="/">Sign out</a></li>
             </ul>
           </div>
           <br />
           <h2 className='Articles-heading'>Add Therapist</h2>
-          <div className='desc-profile'>You can add therapist.</div>
+          <div className='desc-profile'>You can add a therapist.</div>
 
           <div className="container-fluid">
             <form className='container-back' style={{ backgroundColor: '#2F3059', padding: '20px' }} onSubmit={handleAddTherapist}>
