@@ -18,6 +18,8 @@ import Profile2 from './components/MyProfile';
 import TherapistClients from '../src/components/clientcounts';
 import Therapist from '../src/components/addtherapist';
 import DisplayAnswers from '../src/components/check';
+import Appointment from './Pages/Appointment';
+import History from './Pages/History';
 
 const App = () => {
     return (
@@ -28,6 +30,7 @@ const App = () => {
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/appointment" element={<Appointment />} />
                     <Route path="/forgotpass" element={<ForgotPassword />} />
                     <Route path="/reports" element={<Reporting />} />
                     <Route path="/article/:id" element={<Article />} />
@@ -42,6 +45,7 @@ const App = () => {
                     <Route path="/myprofile" element={< Profile2 />} />
                     <Route path="/client-count" element={< TherapistClients />} />
                     <Route path="/add-therapist" element={< Therapist />} />
+                    <Route path="/appointment-history" element={< History />} />
                 </Routes>
             </div>
         </Router>

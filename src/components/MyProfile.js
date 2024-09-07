@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/myprofile.css'
 import Sidebar from '../components/Sidebar';
@@ -11,7 +11,26 @@ const Profile2 = (props) => {
     const location = useLocation();
     const [profilePic, setProfilePic] = useState('https://picsum.photos/200/300');
     const username = useSelector(state => state.username);
-   
+    const navigate=useNavigate();
+    function setCookie(name, value, days) {
+        console.log("storing user");
+        let expires = "";
+        if (days) {
+          const date = new Date();
+          date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+      }
+      
+      // Function to store an object as a cookie
+      function storeUser() {
+        const userStr = JSON.stringify(user); // Convert object to string
+        console.log("cookies" , user);
+        setCookie('user', userStr, 7); // Store for 7 days
+      }
+    
+  
     const handleDeleteAccount = async () => {
         if (window.confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
             try {
@@ -21,10 +40,14 @@ const Profile2 = (props) => {
                     }
                 });
                 alert('Account successfully deleted.');
-                // Optionally, log out the user and redirect
             } catch (error) {
                 alert('Error deleting account.');
             }
+        }
+    };
+    const handleAppointment = async () => {
+        {
+           navigate('/appointment');
         }
     };
 
@@ -54,7 +77,11 @@ const Profile2 = (props) => {
                         <p className='text-body-emphasis4 lead'>Your Id: {user.userId}</p>
                         <p className='text-body-emphasis5 lead'>Your Id and name will appear here. You can navigate all the options for better understanding of this plattform. Hope you enjoy your stay!</p>
                     </div>
+                    <div className='d-flex justify-content-end'>
+                    <button className='deleteBtn me-4' onClick={handleAppointment}>Book an Appointment</button>
                     <button className='deleteBtn' onClick={handleDeleteAccount}>Delete Account</button>
+                    </div>
+
                 </div>
             </div>
         </div>

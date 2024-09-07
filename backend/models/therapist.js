@@ -14,6 +14,10 @@ const therapistSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    timings: {
+        type: [String], // Array of strings to store timings, e.g., ["9:00 AM", "10:00 AM"]
+        default: []    // Default value is an empty array
     }
 });
 
@@ -31,4 +35,3 @@ therapistSchema.methods.comparePassword = function (password) {
 
 const Therapist = mongoose.model('Therapist', therapistSchema);
 module.exports = Therapist;
-

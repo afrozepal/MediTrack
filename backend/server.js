@@ -12,13 +12,14 @@ const Rating = require('../backend/models/rating_schema');
 const ArticleSchema = require('../backend/models/article_schema')
 const nodemailer = require('nodemailer');
 const Diary = require('../backend/models/diary_schema');
+const Appointment =require('../backend/models/Appointment');
 const { spawn } = require('child_process');
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const { onHomeworkAssigned } = require('./Websocketserver');
-
+// import {imgpath} from '../src/assets/Mindmate.png';
 const app = express();
 app.use(bodyParser.json());
 app.use(cors({ origin: true, credentials: true }));
@@ -54,7 +55,6 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-const imagePath = 'C:/web-project-monday/my-react-app/src/assets/Mindmate.png';
 
 const sendEmail = async (to, subject, text) => {
     const mailOptions = {
@@ -65,7 +65,7 @@ const sendEmail = async (to, subject, text) => {
         attachments: [
             {
                 filename: 'Mindmate.png',
-                path: imagePath,
+                path: './Mindmate.png',
                 cid: 'unique@mindmate.cid'
             }
         ],
@@ -80,6 +80,7 @@ const sendEmail = async (to, subject, text) => {
         console.error('Error sending email:', error);
     }
 };
+
 
 app.post('/ratings', authenticateJWT, async (req, res) => {
     try {
@@ -342,6 +343,17 @@ app.delete('/delete-account', async (req, res) => {
     }
 });
 
+app.get('/getemail/:id', async (req, res) => {
+
+    // Find user by ID
+    const  user = await User.findById(req.userId);
+
+    if (user) {
+        res.json({ email: user.email });
+    } else {
+        res.status(404).json({ error: 'User not found' });
+    }
+});
 
 app.get('/userprofile', async (req, res) => {
     try {
@@ -431,6 +443,20 @@ app.get('/getclients', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+app.get('/gettherapists', async (req, res) => {
+    try {
+        // Fetch all therapists
+        const therapists = await Therapist.find(); // Replace with your actual model
+        
+        res.json(therapists);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
+
 
 
 app.post('/addclient', async (req, res) => {
@@ -734,5 +760,123 @@ app.get('/fetchdiary', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Failed to fetch diary entry' });
+    }
+});
+
+const sendEmailonAP = async (to, subject, user, doctor, slot, description) => {
+    const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: to,
+        subject: subject,
+        text: description,
+        html: `
+        <html>
+        <body>
+            <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">
+                <h1 style="color: #6a1b9a;">Appointment Booking Confirmation</h1>
+                <p>Dear ${user.name},</p>
+                <p>We are pleased to confirm your appointment with Dr. ${doctor.name}. Here are the details of your appointment:</p>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;"><strong>Slot:</strong></td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">${slot}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;"><strong>Doctor:</strong></td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">Dr. ${doctor.name}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 8px; border: 1px solid #ddd; background-color: #f9f9f9;"><strong>Specialization:</strong></td>
+                        <td style="padding: 8px; border: 1px solid #ddd;">${doctor.specialization}</td>
+                    </tr>
+                </table>
+                <p>If you need to reschedule or have any questions, please contact us at [Clinic's Phone Number] or [Clinic's Email Address].</p>
+                <p>We look forward to seeing you.</p>
+                <p>Best regards,</p>
+                <p>The Team</p>
+                <p style="color: #777; font-size: 12px;">H-23 block undefined , city xyz</p>
+                <img src="cid:unique@mindmate.cid" alt="Mindmate Image" style="max-width: 100%; height: auto; margin-top: 20px;" />
+            </div>
+        </body>
+        </html>
+        `,
+    };
+
+    try {
+        let info = await transporter.sendMail(mailOptions);
+        console.log('Message sent: %s', info.messageId);
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    } catch (error) {
+        console.error('Error sending email:', error);
+    }
+};
+app.post('/appointments', async (req, res) => {
+    try {
+        const { doctorId, userId, slot, description } = req.body;
+
+        // Fetch user and doctor information
+        const user = await User.findById(userId);
+        const doctor = await Therapist.findById(doctorId); // Assuming you have a Doctor model
+        const email = user.email;
+
+        const appointment = new Appointment({
+            doctorId: doctorId,
+            userId: userId,
+            slot,
+            description,
+        });
+
+        console.log("Creating appointment:", appointment);
+        await appointment.save();
+
+        // Send email with appointment details
+        await sendEmailonAP(email, 'Successful Booking', user, doctor, slot, description);
+
+        res.status(201).json({ message: 'Appointment booked successfully!' });
+    } catch (error) {
+        console.error('Error booking appointment:', error);
+        res.status(500).json({ message: 'Failed to book the appointment.' });
+    }
+});
+
+app.get('/appointmentshistory', async (req, res) => {
+    try {
+        // Fetch all appointments
+        const appointments = await Appointment.find()
+            .sort({ createdAt: -1 }); // Optional: Sort by most recent appointments
+
+        if (appointments.length === 0) {
+            return res.status(404).json({ message: 'No appointments found.' });
+        }
+
+        res.json(appointments);
+    } catch (error) {
+        console.error('Error fetching appointment history:', error);
+        res.status(500).json({ message: 'Error fetching appointment history' });
+    }
+});
+
+
+
+app.put('/changeslot/:appointmentId', async (req, res) => {
+    try {
+        const { appointmentId } = req.params;
+        const { slot } = req.body;
+
+        // Update the appointment slot
+        const appointment = await appointment.findByIdAndUpdate(
+            appointmentId,
+            { slot },
+            { new: true }
+        );
+
+        if (!appointment) {
+            return res.status(404).json({ message: 'Appointment not found' });
+        }
+
+        res.json({ message: 'Slot updated successfully', appointment });
+    } catch (error) {
+        console.error('Error changing slot:', error);
+        res.status(500).json({ message: 'Error changing slot' });
     }
 });

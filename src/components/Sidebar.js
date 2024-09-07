@@ -55,28 +55,34 @@ const Sidebar = () => {
                                 <span className='option-color ms-2 d-sm-inline'>Articles</span>
                             </a>
                         </li>
-                        <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
+                        {/* <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
                             <a href="/diary" className='nav-link text-black fs-6' aria-current="page" onClick={(e) => handleItemClick2('home', e)}>
                                 <img className='style-image-home' src={diary} alt="" />
                                 <span className='ms-2 d-sm-inline'>Diary</span>
                             </a>
-                        </li>
-                        <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
+                        </li> */}
+                        {/* <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
                             <a href="/homework" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={hw} alt="" />
                                 <span className='ms-2 d-sm-inline'>Homework</span>
                             </a>
-                        </li>
-                        <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
+                        </li> */}
+                        {/* <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
                             <a href="/reports" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={rep} alt="" />
                                 <span className='ms-2 d-sm-inline'>Reports</span>
                             </a>
-                        </li>
-                        <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
+                        </li> */}
+                        {/* <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
                             <a href="/playlist" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
                                 <img className='style-image-home' src={music} alt="" />
                                 <span className='ms-2 d-sm-inline'>Playlists</span>
+                            </a>
+                        </li> */}
+                        <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>
+                            <a href="/appointment-history" className='nav-link text-black fs-6' aria-current="page" onClick={() => handleItemClick('home')}>
+                            <img className='style-image-home' src={diary} alt="" />
+                                <span className='ms-2 d-sm-inline'>Appointments</span>
                             </a>
                         </li>
                         {/* <li className={`nav-item text-white fs-6 my-1 py-2 py-sm-0 ${activeItem === 'home' ? 'active' : ''}`}>

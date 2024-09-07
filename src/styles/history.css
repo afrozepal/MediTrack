@@ -1,0 +1,40 @@
+/* AppointmentHistory.css */
+
+.table {
+    background-color: #ffffff; /* White background */
+  }
+  
+  .table thead {
+    background-color: #d6a1d3; /* Light purple background */
+  }
+  
+  .table th, .table td {
+    vertical-align: middle;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f8f9fa; /* Light grey for striped rows */
+  }
+  
+  .table-hover tbody tr:hover {
+    background-color: #f1eaff; /* Slightly darker light purple on hover */
+  }
+  
+  .btn-primary {
+    background-color: #9c7cb6; /* Light purple button */
+    border-color: #9c7cb6; /* Match button border with background */
+  }
+  
+  .btn-primary:hover {
+    background-color: #8e6da1; /* Darker shade of purple on hover */
+    border-color: #8e6da1; /* Match button border with background on hover */
+  }
+  
+  .text-success {
+    color: #28a745; /* Bootstrap success green */
+  }
+  
+  .text-danger {
+    color: #dc3545; /* Bootstrap danger red */
+  }
+  
