@@ -39,7 +39,7 @@ const Sidebar = () => {
                 <div className="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style={{ width: '280px', position: 'fixed' }}>
                     <a href="/homepage" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
                         <img src={logo} alt="Logo" width="40" height="40" className=" d-inline-block align-text-top" />
-                        <span className="sidebar-heading">MindMate</span>
+                        <span className="sidebar-heading">MediTrack</span>
                     </a>
                     <hr className='line' />
                     <ul className="nav nav-pills flex-column mb-auto">

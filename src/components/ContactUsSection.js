@@ -19,8 +19,8 @@ const ContactUsSection = () => {
                         <h3 className='text-design-contactus'>Contact Information</h3>
                         <ul className="text-design-contactus list-unstyled">
                             <li><strong>Helpline:</strong> 0312-7232465</li>
-                            <li><strong>Email:</strong> mindmatewebsite.com</li>
-                            <li><strong>Address:</strong> Fast-Nuces, Lahore, Pakistan</li>
+                            <li><strong>Email:</strong> MediTrackwebsite.com</li>
+                            <li><strong>Address:</strong> Devathon, Lahore, Pakistan</li>
                         </ul>
                     </div>
                 </div>

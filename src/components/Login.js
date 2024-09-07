@@ -46,6 +46,7 @@ const Login = () => {
             }
         } catch (error) {
             console.error('Error logging in', error.response ? error.response.data : error.message);
+            alert(error.message); 
             alert('Invalid Credentials!');
         }
     };
@@ -58,7 +59,7 @@ const Login = () => {
                     <div className="col-lg-7 p-3 p-lg-5 pt-lg-3">
                         <div className="d-flex align-items-center mb-3">
                             <img src={logo1} alt="Logo" className="logo" />
-                            <h1 className="display-4 fw-bold lh-1 text-body-emphasis11">MindMate</h1>
+                            <h1 className="display-4 fw-bold lh-1 text-body-emphasis11">MediTrack</h1>
                         </div>
                         <p className="h4 fw text-body-emphasis2 lh-1 mb-3">Welcome back! Please log in to continue.</p>
                     </div>
